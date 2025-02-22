@@ -1,0 +1,67 @@
+{
+  "name": "dynamic-chart-dashboard-reactjs",
+  "private": true,
+  "version": "0.0.0",
+  "author": {
+    "name": "Ahmad Yones",
+    "email": "ahmadmhdyones@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahmadmhdyones/dynamic-chart-dashboard-reactjs"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:ts": "npm run dev && npm run ts:watch",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "clean": "rimraf node_modules dist",
+    "re:build": "npm run clean && npm install && npm run build",
+    "format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,html,css,scss,md}\"",
+    "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,html,css,scss,md}\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "ts:check": "tsc --noEmit --incremental",
+    "ts:watch": "npm run ts:check --watch",
+    "check": "npm run format && npm run lint && npm run ts:check",
+    "fix": "npm run format:fix && npm run lint:fix"
+  },
+  "engines": {
+    "node": "22.14.0"
+  },
+  "overrides": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.5",
+    "@mui/material": "^6.4.5",
+    "axios": "^1.7.9",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-router-dom": "^7.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-perfectionist": "^4.9.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^15.14.0",
+    "prettier": "^3.5.1",
+    "rimraf": "^6.0.1",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0",
+    "vite": "^6.1.0"
+  }
+}
