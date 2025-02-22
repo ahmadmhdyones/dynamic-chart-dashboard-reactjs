@@ -42,5 +42,5 @@
     /* Build Performance */
     "incremental": true
   },
-  "include": ["src"]
+  "include": ["src", "vite.config.ts"]
 }

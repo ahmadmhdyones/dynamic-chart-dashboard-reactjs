@@ -1,5 +1,6 @@
-import path from 'path';
+/* eslint-disable perfectionist/sort-objects */
 
+import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import checker from 'vite-plugin-checker';
@@ -12,7 +13,10 @@ export default defineConfig({
     react(),
     checker({
       typescript: true,
-      eslint: { lintCommand: 'eslint .' },
+      eslint: {
+        lintCommand: 'eslint --config ./eslint.config.js',
+        useFlatConfig: true,
+      },
       overlay: {
         initialIsOpen: false,
         position: 'tl',
