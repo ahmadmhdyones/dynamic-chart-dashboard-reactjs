@@ -2,12 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+
+    <title>%VITE_APP_NAME%</title>
+    <meta name="author" content="Ahmad Yones" />
+    <meta name="description" content="%VITE_APP_DESCRIPTION%" />
+    <meta name="keywords" content="React, MUI, Vercel, TypeScript, Recharts, FRED API" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:description" content="%VITE_APP_DESCRIPTION%" />
+    <meta property="og:image" content="/assets/images/dynamic-chart-dashboard-reactjs.og.jpg" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="%VITE_APP_NAME%" />
+    <meta property="og:title" content="%VITE_APP_NAME%" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="%VITE_APP_URL%" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@ahmadmhdyones" />
+    <meta name="twitter:description" content="%VITE_APP_DESCRIPTION%" />
+    <meta name="twitter:image" content="/assets/images/dynamic-chart-dashboard-reactjs.og.jpg" />
+    <meta name="twitter:title" content="%VITE_APP_NAME%" />
+    <meta name="twitter:url" content="%VITE_APP_URL%" />
   </head>
+
   <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

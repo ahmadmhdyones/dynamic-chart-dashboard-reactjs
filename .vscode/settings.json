@@ -65,5 +65,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "cSpell.words": ["ahmadmhdyones", "commitlint", "reactjs", "Yones"]
+  "cSpell.words": ["ahmadmhdyones", "commitlint", "reactjs", "VITE", "Yones"]
 }
