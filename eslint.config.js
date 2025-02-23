@@ -59,6 +59,7 @@ export default tseslint.config(
       'no-underscore-dangle': 'off',
       'no-restricted-exports': 'off',
       'no-promise-executor-return': 'warn',
+      'no-restricted-imports': ['error', { patterns: ['@mui/*/*/*'] }],
 
       // React Specific Rules
       'react/button-has-type': 'error',
