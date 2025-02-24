@@ -47,7 +47,6 @@ function ChartTypeStep({ onTypeChange, options, selectedType }: Props) {
                   'boxShadow': selectedType === option.value ? 3 : 1,
                   'cursor': 'pointer',
                   'height': '100%',
-                  'position': 'relative',
                   'transition': 'all 0.2s',
                   ...(!option.supported && { opacity: 0.5, pointerEvents: 'none' }),
                 }}
@@ -69,15 +68,10 @@ function ChartTypeStep({ onTypeChange, options, selectedType }: Props) {
                           borderRadius: 1,
                           color: 'primary.contrastText',
                           padding: 1,
-                          position: 'absolute',
-                          px: 4,
-                          py: 1.5,
-                          right: 0,
-                          top: 0,
                         }}
-                        variant='button'
+                        variant='caption'
                       >
-                        Coming Soon
+                        Not Supported
                       </Box>
                     ) : (
                       <FormControlLabel
