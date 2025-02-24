@@ -1,21 +1,26 @@
 import { PageContainer } from '@toolpad/core/PageContainer';
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-
+import { paths } from '@/helpers/map-routes';
 import MetaTags from '@/components/common/meta-tags';
-import { PageType } from '@/helpers/map-routes/pages.enum';
+import { SectionChartForm } from '@/sections/section-chart-form';
 
 // ----------------------------------------------------------------------
 
-export default function PageChartsNew() {
+function PageChartsNew() {
   return (
-    <PageContainer>
-      <MetaTags title='Create New Chart | DCD Reactjs' />
+    <PageContainer
+      breadcrumbs={[
+        { path: paths.dashboard.root.to(), title: 'Dashboard' },
+        { path: paths.dashboard.charts.root.to(), title: 'Charts' },
+        { path: paths.dashboard.charts.new.to(), title: 'New' },
+      ]}
+      title='Create New Chart'
+    >
+      <MetaTags title='Create New Chart | DCDR' />
 
-      <Box component='main' id={PageType.ChartsNewPage}>
-        <Typography variant='h4'>Charts New</Typography>
-      </Box>
+      <SectionChartForm />
     </PageContainer>
   );
 }
+
+export default PageChartsNew;
