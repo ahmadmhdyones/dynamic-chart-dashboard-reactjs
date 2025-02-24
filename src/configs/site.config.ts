@@ -1,10 +1,8 @@
-const siteUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : import.meta.env.VITE_APP_URL || 'http://localhost:3000';
+const siteUrl = import.meta.env.VERCEL_URL ? `https://${import.meta.env.VERCEL_URL}` : import.meta.env.VITE_APP_URL;
 
 export const SITE = {
-  description: import.meta.env.VITE_APP_DESCRIPTION || 'A dashboard to display dynamic charts using React.',
-  name: import.meta.env.VITE_APP_NAME || 'Dynamic Chart Dashboard React',
+  description: 'A dashboard to display dynamic charts using React.',
+  name: 'Dynamic Chart Dashboard React',
   url: siteUrl,
 };
 
