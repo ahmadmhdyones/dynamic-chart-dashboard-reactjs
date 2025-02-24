@@ -1,7 +1,7 @@
+import { Link } from 'react-router';
 import { PageContainer } from '@toolpad/core/PageContainer';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import Typography from '@mui/material/Typography';
@@ -21,8 +21,9 @@ function PageCharts() {
           <Box alignItems='center' display='flex' justifyContent='space-between' mb={2}>
             <Typography variant='h6'>Total items: 51</Typography>
 
-            <Button component={Link} href={paths.dashboard.charts.new.to()} startIcon={<AddIcon />} variant='contained'>
-              Create New
+            <Button component={Link} sx={{ gap: 1 }} to={paths.dashboard.charts.new.to()} variant='contained'>
+              <AddIcon />
+              <Typography variant='button'>Create New</Typography>
             </Button>
           </Box>
         </Box>
