@@ -11,7 +11,7 @@ import AppLoader from '@/components/ui/app-loader';
 // ----------------------------------------------------------------------
 
 const LayoutDashboard = lazy(() => import('@/pages/dashboard/layout'));
-const PageDashboardOverview = lazy(() => import('@/pages/dashboard/(overview)/page'));
+const PageOverview = lazy(() => import('@/pages/dashboard/(overview)/page'));
 const PageCharts = lazy(() => import('@/pages/dashboard/charts/page'));
 const PageChartsNew = lazy(() => import('@/pages/dashboard/charts/new/page'));
 const PageChartsEdit = lazy(() => import('@/pages/dashboard/charts/[id]/edit/page'));
@@ -31,12 +31,12 @@ const routesDashboard = [
       </Suspense>
     ),
     children: [
-      { index: true, Component: PageDashboardOverview },
+      { index: true, Component: PageOverview },
       { path: 'settings', Component: PageSettings },
       {
         path: 'charts',
-        Component: PageCharts,
         children: [
+          { index: true, Component: PageCharts },
           { path: 'new', Component: PageChartsNew },
           { path: `:${RouteParams.ChartId}/edit`, Component: PageChartsEdit },
         ],

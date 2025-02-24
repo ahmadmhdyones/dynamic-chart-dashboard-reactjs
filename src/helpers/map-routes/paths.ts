@@ -35,7 +35,7 @@ export const paths = {
       new: { id: PageType.ChartsNewPage, to: () => `${ROOTS.DASHBOARD}/charts/new` },
       root: { id: PageType.ChartsPage, to: () => `${ROOTS.DASHBOARD}/charts` },
     },
-    root: { id: PageType.DashboardOverviewPage, to: () => `${ROOTS.DASHBOARD}` },
+    root: { id: PageType.OverviewPage, to: () => `${ROOTS.DASHBOARD}` },
     settings: {
       id: PageType.SettingsPage,
       to: () => `${ROOTS.DASHBOARD}/settings`,
