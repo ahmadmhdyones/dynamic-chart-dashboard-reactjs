@@ -4,5 +4,6 @@ export const enum PageType {
   ChartsEditPage = 'charts-edit-page',
   DashboardOverviewPage = 'dashboard-overview-page',
   HomePage = 'home-page',
+  Page404 = '404-page',
   SettingsPage = 'settings-page',
 }

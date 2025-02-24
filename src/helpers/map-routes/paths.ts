@@ -5,8 +5,8 @@ import { PageType } from './pages.enum';
 // ----------------------------------------------------------------------
 
 const ROOTS = {
+  AUTH: '/auth',
   DASHBOARD: '/dashboard',
-  HOME: '/',
 };
 
 // ----------------------------------------------------------------------
@@ -41,5 +41,6 @@ export const paths = {
       to: () => `${ROOTS.DASHBOARD}/settings`,
     },
   },
-  root: { id: PageType.HomePage, to: () => `${ROOTS.HOME}` },
+  page404: { id: PageType.Page404, to: () => `/not-found` },
+  root: { id: PageType.HomePage, to: () => `/` },
 } as const;
