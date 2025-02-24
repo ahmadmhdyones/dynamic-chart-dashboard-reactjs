@@ -21,7 +21,10 @@ function App({ children }: Props) {
   return (
     <Suspense fallback={<PageLoader />}>
       <ReactRouterAppProvider
-        branding={{ logo: <Logo />, title: matches ? SITE.name : getStrShortcut(SITE.name) }}
+        branding={{
+          logo: <Logo disabledLink />,
+          title: matches ? SITE.name : getStrShortcut(SITE.name),
+        }}
         navigation={NAVIGATION}
       >
         {children}
