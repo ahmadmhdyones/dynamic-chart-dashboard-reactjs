@@ -1,4 +1,4 @@
-import type { ChartType } from '@/models';
+import type { ChartType } from '@/types/chart-type.enum';
 
 // ----------------------------------------------------------------------
 
