@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { PageType } from '@/helpers/map-routes';
+import MetaTags from '@/components/common/meta-tags';
 
 // ----------------------------------------------------------------------
 
@@ -22,6 +23,8 @@ function PageNotFound() {
         textAlign: 'center',
       }}
     >
+      <MetaTags description='Sorry, the page you are looking for does not exist.' title='404 Not Found' />
+
       <Typography component='div' gutterBottom variant='h1'>
         404
       </Typography>
