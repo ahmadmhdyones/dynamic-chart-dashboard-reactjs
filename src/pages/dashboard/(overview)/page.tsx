@@ -1,21 +1,21 @@
+import { PageContainer } from '@toolpad/core/PageContainer';
+
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+import { paths } from '@/helpers/map-routes';
 import MetaTags from '@/components/common/meta-tags';
-import { PageType } from '@/helpers/map-routes/pages.enum';
 
 // ----------------------------------------------------------------------
 
 export default function PageDashboardOverview() {
   return (
-    <>
+    <PageContainer>
       <MetaTags title='Overview | DCD Reactjs' />
-      <Box component='main' id={PageType.DashboardOverviewPage}>
-        <Container>
-          <Typography variant='h4'>Dashboard Overview</Typography>
-        </Container>
+
+      <Box component={'main'} id={paths.dashboard.root.id}>
+        <Typography variant='h4'>Dashboard Overview</Typography>
       </Box>
-    </>
+    </PageContainer>
   );
 }
