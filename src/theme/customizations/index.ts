@@ -1,2 +1,2 @@
-export { inputsCustomizations } from './inputs';
+export { typography } from './typography';
 export { navigationCustomizations } from './navigation';

@@ -2,9 +2,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import type { PaletteMode } from '@mui/material/styles';
 import { createTheme, useColorScheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 
-import { typography } from './typography';
 import { getDesignTokens } from './theme-primitives';
-import { inputsCustomizations, navigationCustomizations } from './customizations';
+import { typography, navigationCustomizations } from './customizations';
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +17,6 @@ export default function ThemeProvider({ children }: Props) {
   const theme = createTheme({
     ...getDesignTokens(mode as PaletteMode),
     components: {
-      ...inputsCustomizations,
       ...navigationCustomizations,
     },
     typography,

@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 import { ReactRouterAppProvider } from '@toolpad/core/react-router';
 
+import { useTheme } from '@mui/material/styles';
+
 import Logo from '@/components/ui/logo';
 import { SITE } from '@/configs/site.config';
 import PageLoader from '@/components/ui/page-loader';
@@ -15,6 +17,7 @@ interface Props {
 }
 
 function App({ children }: Props) {
+  const theme = useTheme();
   const isMobile = useResponsive('down', 'sm');
 
   return (
@@ -25,6 +28,7 @@ function App({ children }: Props) {
           title: isMobile ? getStrShortcut(SITE.name) : SITE.name,
         }}
         navigation={NAVIGATION}
+        theme={theme}
       >
         {children}
       </ReactRouterAppProvider>
