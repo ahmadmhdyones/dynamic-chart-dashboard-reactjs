@@ -19,7 +19,7 @@ export default defineConfig({
       },
       overlay: {
         initialIsOpen: false,
-        position: 'tl',
+        position: 'bl',
         // badgeStyle: 'display: none;', // Use this to hide the badge
       },
     }),
