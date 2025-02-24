@@ -5,8 +5,7 @@ import Typography from '@mui/material/Typography';
 import type { ChartTypeOption } from '@/types/chart.types';
 
 import type { ChartType } from '@/models';
-
-import ChartTypeCard from './chart-type-card';
+import ChartTypeCard from '@/sections/section-chart-form/components/chart-type-card';
 
 // ----------------------------------------------------------------------
 
