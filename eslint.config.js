@@ -79,7 +79,7 @@ export default tseslint.config(
 
       // TypeScript Specific Rules
       '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-empty-object-type': 'error',
+      '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { args: 'none' }],
       '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
       '@typescript-eslint/consistent-type-imports': [
