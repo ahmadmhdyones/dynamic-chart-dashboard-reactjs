@@ -22,16 +22,6 @@ export function responsiveFontSizes({ lg, md, sm }: { sm: number; md: number; lg
   };
 }
 
-declare module '@mui/material/styles' {
-  interface TypographyVariants {
-    fontSecondaryFamily: React.CSSProperties['fontFamily'];
-    fontWeightSemiBold: React.CSSProperties['fontWeight'];
-  }
-}
-
-export const primaryFont = '"Urbanist", sans-serif';
-export const secondaryFont = '"Urbanist", sans-serif';
-
 // ----------------------------------------------------------------------
 
 export const typography = {
@@ -53,8 +43,6 @@ export const typography = {
     fontSize: pxToRem(10),
     lineHeight: 1.5,
   },
-  fontFamily: primaryFont,
-  fontSecondaryFamily: secondaryFont,
   fontWeightBold: 700,
   fontWeightMedium: 500,
   fontWeightRegular: 400,
