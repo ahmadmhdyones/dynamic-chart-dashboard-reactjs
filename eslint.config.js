@@ -44,7 +44,7 @@ export default tseslint.config(
       },
       'import/resolver': {
         typescript: {
-          project: './tsconfig.json',
+          project: './tsconfig.app.json',
           alwaysTryTypes: true,
         },
       },
@@ -127,10 +127,7 @@ export default tseslint.config(
           groups: [
             ['builtin', 'external'],
             'custom-mui',
-            'custom-hooks',
-            'custom-components',
             'custom-types',
-            'custom-configs',
             'internal',
             ['parent', 'sibling', 'index'],
             'object',
@@ -139,10 +136,7 @@ export default tseslint.config(
           customGroups: {
             value: {
               'custom-mui': '^@mui/.*',
-              'custom-hooks': '^@/hooks/.*',
-              'custom-components': '^@/components/.*',
               'custom-types': '^@/types/.*',
-              'custom-configs': '^@/configs/.*',
             },
           },
           newlinesBetween: 'always',
