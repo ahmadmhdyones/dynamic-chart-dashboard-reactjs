@@ -3,7 +3,7 @@ import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { PageType } from '@/helpers/map-routes';
+import { paths } from '@/helpers/map-routes';
 import MetaTags from '@/components/common/meta-tags';
 
 // ----------------------------------------------------------------------
@@ -12,7 +12,7 @@ function PageNotFound() {
   return (
     <Box
       component='main'
-      id={PageType.Page404}
+      id={paths.page404.id}
       sx={{
         alignItems: 'center',
         display: 'flex',

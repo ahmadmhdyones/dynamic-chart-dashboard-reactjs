@@ -9,15 +9,17 @@ import MetaTags from '@/components/common/meta-tags';
 
 // ----------------------------------------------------------------------
 
-export default function PageHome() {
+function PageHome() {
   return (
-    <PageContainer>
+    <PageContainer breadcrumbs={[{ path: paths.root.to(), title: 'Home' }]} title='Home'>
       <MetaTags />
 
-      <Box component={'main'} id={paths.root.id}>
-        <Typography variant='h4'>{SITE.name}</Typography>
+      <Box component='main' id={paths.root.id}>
+        <Typography variant='h6'>{SITE.name}</Typography>
         <Typography variant='body1'>{SITE.description}</Typography>
       </Box>
     </PageContainer>
   );
 }
+
+export default PageHome;
