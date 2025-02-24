@@ -1,12 +1,11 @@
 import { Suspense } from 'react';
 import { ReactRouterAppProvider } from '@toolpad/core/react-router';
 
-import useMediaQuery from '@mui/material/useMediaQuery';
-
 import Logo from '@/components/ui/logo';
 import { SITE } from '@/configs/site.config';
 import PageLoader from '@/components/ui/page-loader';
 import { getStrShortcut } from '@/utils/string-utils';
+import { useResponsive } from '@/hooks/use-responsive';
 import { NAVIGATION } from '@/configs/navigation.config';
 
 // ----------------------------------------------------------------------
@@ -16,14 +15,14 @@ interface Props {
 }
 
 function App({ children }: Props) {
-  const matches = useMediaQuery(theme => theme.breakpoints.up('sm'));
+  const isMobile = useResponsive('down', 'sm');
 
   return (
     <Suspense fallback={<PageLoader />}>
       <ReactRouterAppProvider
         branding={{
           logo: <Logo disabledLink />,
-          title: matches ? SITE.name : getStrShortcut(SITE.name),
+          title: isMobile ? getStrShortcut(SITE.name) : SITE.name,
         }}
         navigation={NAVIGATION}
       >
