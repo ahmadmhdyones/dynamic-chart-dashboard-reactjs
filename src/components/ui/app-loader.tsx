@@ -8,10 +8,9 @@ import { alpha } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import Logo from '@/components/ui/logo';
 import { SITE } from '@/configs/site.config';
 import { getStrShortcut } from '@/utils/string-utils';
-
-import Logo from './logo';
 
 // ----------------------------------------------------------------------
 

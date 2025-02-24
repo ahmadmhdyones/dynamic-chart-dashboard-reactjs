@@ -1,35 +1,32 @@
-import { useState } from 'react';
+import { Suspense } from 'react';
+import { ReactRouterAppProvider } from '@toolpad/core/react-router';
 
-import './app.css';
-import viteLogo from './assets/vite.svg';
-import reactLogo from './assets/react.svg';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+import Logo from '@/components/ui/logo';
+import { SITE } from '@/configs/site.config';
+import PageLoader from '@/components/ui/page-loader';
+import { getStrShortcut } from '@/utils/string-utils';
+import { NAVIGATION } from '@/configs/navigation.config';
 
 // ----------------------------------------------------------------------
 
-function App() {
-  const [count, setCount] = useState(0);
+interface Props {
+  readonly children: React.ReactNode;
+}
+
+function App({ children }: Props) {
+  const matches = useMediaQuery(theme => theme.breakpoints.up('sm'));
 
   return (
-    <>
-      <div>
-        <a href='https://vite.dev' rel='noreferrer' target='_blank'>
-          <img alt='Vite logo' className='logo' src={viteLogo} />
-        </a>
-        <a href='https://react.dev' rel='noreferrer' target='_blank'>
-          <img alt='React logo' className='logo react' src={reactLogo} />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount(count => count + 1)} type='button'>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-    </>
+    <Suspense fallback={<PageLoader />}>
+      <ReactRouterAppProvider
+        branding={{ logo: <Logo />, title: matches ? SITE.name : getStrShortcut(SITE.name) }}
+        navigation={NAVIGATION}
+      >
+        {children}
+      </ReactRouterAppProvider>
+    </Suspense>
   );
 }
 
