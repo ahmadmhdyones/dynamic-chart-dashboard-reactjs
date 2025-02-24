@@ -17,7 +17,7 @@ function PageChartsEdit() {
       ]}
       title={`Charts Edit ${'chart_id'}`}
     >
-      <MetaTags title={`Charts Edit ${'chart_id'} | DCD Reactjs`} />
+      <MetaTags title={`Charts Edit ${'chart_id'} | DCDR`} />
 
       <Box component='main' id={paths.dashboard.charts.id.edit.id}>
         {/*  */}

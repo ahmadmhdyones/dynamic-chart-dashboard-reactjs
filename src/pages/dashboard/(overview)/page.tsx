@@ -10,7 +10,7 @@ import MetaTags from '@/components/common/meta-tags';
 function PageDashboardOverview() {
   return (
     <PageContainer title='Overview'>
-      <MetaTags title='Overview | DCD Reactjs' />
+      <MetaTags title='Overview | DCDR' />
 
       <Box component='main' id={paths.dashboard.root.id}>
         {/*  */}

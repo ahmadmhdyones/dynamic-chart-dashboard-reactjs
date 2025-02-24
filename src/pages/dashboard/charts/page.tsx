@@ -14,7 +14,7 @@ import MetaTags from '@/components/common/meta-tags';
 function PageCharts() {
   return (
     <PageContainer>
-      <MetaTags title='Charts | DCD Reactjs' />
+      <MetaTags title='Charts | DCDR' />
 
       <Box component='main' id={paths.dashboard.charts.root.id}>
         {/* TODO: move to a component */}

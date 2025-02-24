@@ -1,6 +1,6 @@
 {
   "name": "Dynamic Chart Dashboard React",
-  "short_name": "DCD React",
+  "short_name": "DCDR",
   "description": "A dashboard to display dynamic charts using React.",
   "icons": [
     { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
