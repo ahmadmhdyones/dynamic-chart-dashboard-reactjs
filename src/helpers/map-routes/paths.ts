@@ -1,4 +1,4 @@
-import type { IChart } from '@/types/models/chart.model';
+import type { IChart } from '@/types/models/chart.types';
 
 import { PageType } from './pages.enum';
 
