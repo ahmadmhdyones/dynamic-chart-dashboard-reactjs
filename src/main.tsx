@@ -5,6 +5,7 @@ import { Provider as StoreProvider } from 'react-redux';
 import '@/global.css';
 import { store } from '@/stores';
 import { router } from '@/routes';
+import ThemeProvider from '@/theme';
 import ReactQueryProvider from '@/helpers/react-query';
 
 // ----------------------------------------------------------------------
@@ -12,7 +13,9 @@ import ReactQueryProvider from '@/helpers/react-query';
 createRoot(document.getElementById('root')!).render(
   <ReactQueryProvider>
     <StoreProvider store={store}>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </StoreProvider>
   </ReactQueryProvider>
 );
