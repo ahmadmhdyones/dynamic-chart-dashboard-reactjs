@@ -7,6 +7,7 @@ import { useTheme } from '@mui/material/styles';
 import Logo from '@/components/ui/logo';
 import { SITE } from '@/configs/site.config';
 import PageLoader from '@/components/ui/page-loader';
+import { configToast } from '@/configs/global.config';
 import { useResponsive } from '@/hooks/use-responsive';
 import { getStrShortcut } from '@/helpers/string.utils';
 import { NAVIGATION } from '@/configs/navigation.config';
@@ -38,7 +39,7 @@ function App({ children }: Props) {
         position='top-right'
         reverseOrder={false}
         toastOptions={{
-          duration: 5000,
+          duration: configToast.duration,
           error: { style: { borderLeft: `4px solid ${theme.palette.error.main}` } },
           style: { background: theme.palette.background.paper, color: theme.palette.text.primary },
           success: { style: { borderLeft: `4px solid ${theme.palette.success.main}` } },

@@ -1,21 +1,23 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+import { configQuery } from '@/configs/global.config';
+
 // ----------------------------------------------------------------------
 
 const queryClient = new QueryClient({
   defaultOptions: {
     mutations: {
       networkMode: 'offlineFirst',
-      retry: 0,
+      retry: configQuery.retryCount,
       throwOnError: false,
     },
     queries: {
       networkMode: 'offlineFirst',
       refetchInterval: false,
-      retry: 1,
+      retry: configQuery.retryCount,
       retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000), // Exponential backoff
-      staleTime: 1000 * 60,
+      staleTime: configQuery.staleTime,
       throwOnError: false,
     },
   },

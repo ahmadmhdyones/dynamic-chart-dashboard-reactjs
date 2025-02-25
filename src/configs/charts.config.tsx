@@ -9,6 +9,8 @@ import type { ChartTypeOption } from '@/types/chart.types';
 
 // ----------------------------------------------------------------------
 
+export const CHART_MAX_DATA_SERIES = 5;
+
 export const CHARTS: ChartTypeOption[] = [
   {
     description: 'Best for showing trends over time or continuous data.',
