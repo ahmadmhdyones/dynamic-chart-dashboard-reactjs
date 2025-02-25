@@ -28,7 +28,7 @@ function App({ children }: Props) {
           title: isMobile ? getStrShortcut(SITE.name) : SITE.name,
         }}
         navigation={NAVIGATION}
-        theme={theme}
+        theme={theme} // FIX: dark/light mode isn't working in custom toolpad theme
       >
         {children}
       </ReactRouterAppProvider>
