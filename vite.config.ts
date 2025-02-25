@@ -5,6 +5,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import checker from 'vite-plugin-checker';
 
+import { FRED_API_URL, FRED_BASE_URL } from '@/configs/global.config';
+
 // ----------------------------------------------------------------------
 
 // https://vite.dev/config/
@@ -31,6 +33,18 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+    proxy: {
+      [FRED_BASE_URL]: {
+        target: FRED_API_URL,
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api\/fred/, ''),
+        configure: proxy => {
+          proxy.on('error', err => {
+            console.error('Proxy error:', err);
+          });
+        },
+      },
+    },
   },
   preview: {
     port: 8080,
