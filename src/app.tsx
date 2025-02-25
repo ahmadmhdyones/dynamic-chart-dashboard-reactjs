@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { ReactRouterAppProvider } from '@toolpad/core/react-router';
 
 import { useTheme } from '@mui/material/styles';
@@ -6,8 +7,8 @@ import { useTheme } from '@mui/material/styles';
 import Logo from '@/components/ui/logo';
 import { SITE } from '@/configs/site.config';
 import PageLoader from '@/components/ui/page-loader';
-import { getStrShortcut } from '@/utils/string-utils';
 import { useResponsive } from '@/hooks/use-responsive';
+import { getStrShortcut } from '@/helpers/string.utils';
 import { NAVIGATION } from '@/configs/navigation.config';
 
 // ----------------------------------------------------------------------
@@ -32,6 +33,17 @@ function App({ children }: Props) {
       >
         {children}
       </ReactRouterAppProvider>
+
+      <Toaster
+        position='top-right'
+        reverseOrder={false}
+        toastOptions={{
+          duration: 5000,
+          error: { style: { borderLeft: `4px solid ${theme.palette.error.main}` } },
+          style: { background: theme.palette.background.paper, color: theme.palette.text.primary },
+          success: { style: { borderLeft: `4px solid ${theme.palette.success.main}` } },
+        }}
+      />
     </Suspense>
   );
 }
