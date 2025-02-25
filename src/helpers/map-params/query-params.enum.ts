@@ -10,7 +10,5 @@
  */
 
 export enum QueryParams {
-  Frequency = 'frequency',
-  Title = 'title',
-  Type = 'type',
+  ChartId = 'chart_id',
 }

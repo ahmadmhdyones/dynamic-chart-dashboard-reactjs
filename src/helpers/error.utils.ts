@@ -1,6 +1,6 @@
-import axios from 'axios';
 import toast from 'react-hot-toast';
 import type { AxiosError } from 'axios';
+import axios, { HttpStatusCode } from 'axios';
 
 // ----------------------------------------------------------------------
 
@@ -26,24 +26,24 @@ export const ERROR_MESSAGES = {
 
 // ----------------------------------------------------------------------
 
-export const getErrorMessageByStatus = (status: number): string => {
+export const getErrorMessageByStatus = (status: HttpStatusCode): string => {
   switch (status) {
-    case 400:
+    case HttpStatusCode.BadRequest:
       return ERROR_MESSAGES.VALIDATION;
-    case 401:
+    case HttpStatusCode.Unauthorized:
       return ERROR_MESSAGES.UNAUTHORIZED;
-    case 403:
+    case HttpStatusCode.Forbidden:
       return ERROR_MESSAGES.FORBIDDEN;
-    case 404:
+    case HttpStatusCode.NotFound:
       return ERROR_MESSAGES.NOT_FOUND;
-    case 408:
+    case HttpStatusCode.RequestTimeout:
       return ERROR_MESSAGES.TIMEOUT;
-    case 429:
+    case HttpStatusCode.TooManyRequests:
       return ERROR_MESSAGES.RATE_LIMIT;
-    case 500:
-    case 502:
-    case 503:
-    case 504:
+    case HttpStatusCode.InternalServerError:
+    case HttpStatusCode.BadGateway:
+    case HttpStatusCode.ServiceUnavailable:
+    case HttpStatusCode.GatewayTimeout:
       return ERROR_MESSAGES.SERVER;
     default:
       return ERROR_MESSAGES.DEFAULT;
