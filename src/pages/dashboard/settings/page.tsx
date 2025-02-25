@@ -13,7 +13,7 @@ function PageSettings() {
       <MetaTags title='Settings | DCDR' />
 
       <Box component='main' id={paths.dashboard.settings.id}>
-        {/*  */}
+        {/* TODO: Add settings section here */}
       </Box>
     </PageContainer>
   );

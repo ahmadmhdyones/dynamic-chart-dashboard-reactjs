@@ -13,7 +13,7 @@ function PageDashboardOverview() {
       <MetaTags title='Overview | DCDR' />
 
       <Box component='main' id={paths.dashboard.root.id}>
-        {/*  */}
+        {/* TODO: Add dashboard overview section here */}
       </Box>
     </PageContainer>
   );

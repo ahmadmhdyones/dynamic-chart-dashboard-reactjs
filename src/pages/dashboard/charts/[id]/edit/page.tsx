@@ -8,6 +8,11 @@ import MetaTags from '@/components/common/meta-tags';
 // ----------------------------------------------------------------------
 
 function PageChartsEdit() {
+  // TODO: add params type
+  // TODO: get chart id from url params
+  // TODO: fetch chart data
+  // TODO: pass chart data to the section
+
   return (
     <PageContainer
       breadcrumbs={[
@@ -20,7 +25,7 @@ function PageChartsEdit() {
       <MetaTags title={`Charts Edit ${'chart_id'} | DCDR`} />
 
       <Box component='main' id={paths.dashboard.charts.id.edit.id}>
-        {/*  */}
+        {/* TODO: Add charts edit section here */}
       </Box>
     </PageContainer>
   );

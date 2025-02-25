@@ -20,6 +20,7 @@ function PageCharts() {
         {/* TODO: move to a component */}
         <Box component='section'>
           <Box alignItems='center' display='flex' justifyContent='space-between' mb={2}>
+            {/* TODO: add total items count as a component with skeleton */}
             <Typography variant='h6'>Total items: 51</Typography>
 
             <Button component={Link} sx={{ gap: 1 }} to={paths.dashboard.charts.new.to()} variant='contained'>
