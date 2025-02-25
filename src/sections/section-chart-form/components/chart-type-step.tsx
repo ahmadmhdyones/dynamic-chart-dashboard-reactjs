@@ -9,6 +9,10 @@ import ChartTypeCard from '@/sections/section-chart-form/components/chart-type-c
 
 // ----------------------------------------------------------------------
 
+export const CHART_TYPE_STEP_TITLE = 'Select Chart Type';
+
+// ----------------------------------------------------------------------
+
 interface ChartTypeStepProps {
   selectedType: ChartType;
   onTypeChange: (type: ChartType) => void;
@@ -19,7 +23,7 @@ function ChartTypeStep({ onTypeChange, options, selectedType }: ChartTypeStepPro
   return (
     <Box sx={{ py: 2 }}>
       <Typography gutterBottom variant='h6'>
-        Select Chart Type
+        {CHART_TYPE_STEP_TITLE}
       </Typography>
       <Typography color='text.secondary' sx={{ mb: 3 }} variant='body2'>
         Choose the type of chart that best represents your data.
