@@ -10,7 +10,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import Logo from '@/components/ui/logo';
 import { SITE } from '@/configs/site.config';
-import { getStrShortcut } from '@/utils/string-utils';
+import { getStrShortcut } from '@/helpers/string.utils';
 
 // ----------------------------------------------------------------------
 
