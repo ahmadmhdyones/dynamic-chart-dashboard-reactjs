@@ -50,7 +50,7 @@ function ChartTypeCard({ onSelect, option, selected }: ChartTypeCardProps) {
                 {option.label}
               </Typography>
             </Box>
-            <Typography color='text.secondary' variant='body2'>
+            <Typography color={selected ? 'text.primary' : 'text.secondary'} variant='body2'>
               {option.description}
             </Typography>
             {!option.supported && (
