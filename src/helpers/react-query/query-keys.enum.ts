@@ -15,4 +15,7 @@ export const queryKeys = {
   // Charts
   chart: (id: IChart['id']) => `chart-${id}`,
   charts: () => 'charts',
+
+  // Fred
+  fredSeries: () => 'fred-series',
 } as const;
