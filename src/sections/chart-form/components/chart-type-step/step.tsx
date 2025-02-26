@@ -17,7 +17,7 @@ export const CHART_TYPE_STEP_TITLE = 'Choose Chart Type';
 
 function ChartTypeStep() {
   const {
-    formData: { chartType },
+    formData: { type },
     setChartType,
   } = use(ChartFormContext)!;
 
@@ -37,7 +37,7 @@ function ChartTypeStep() {
               description={option.description}
               disabled={!option.supported}
               icon={option.icon}
-              isSelected={chartType === option.value}
+              isSelected={type === option.value}
               label={option.label}
               onClick={() => option.supported && setChartType(option.value)}
             />
