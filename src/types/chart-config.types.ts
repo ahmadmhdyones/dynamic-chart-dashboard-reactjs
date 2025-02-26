@@ -4,9 +4,7 @@ import type { ChartType } from '@/types/chart-type.enum';
 
 export interface BaseChartConfig {
   title: string;
-  // legendPosition?: 'top' | 'right' | 'bottom' | 'left' | 'none';
-  // margin?: { top: number; right: number; bottom: number; left: number };
-  // bgColor?: string;
+  legendPosition: 'top' | 'right' | 'bottom' | 'left' | 'none';
 }
 
 export interface AxisChartConfig extends BaseChartConfig {

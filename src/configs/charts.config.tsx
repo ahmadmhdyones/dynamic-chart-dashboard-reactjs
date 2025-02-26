@@ -6,10 +6,16 @@ import ScatterPlotIcon from '@mui/icons-material/ScatterPlot';
 
 import { ChartType } from '@/types/chart-type.enum';
 import type { ChartTypeOption } from '@/types/chart.types';
+import { FredFrequencyShort } from '@/types/fred-freq.enum';
 
 // ----------------------------------------------------------------------
 
 export const CHART_MAX_DATA_SERIES = 5;
+
+export const configChartDefault = {
+  timeFrequency: FredFrequencyShort.Annual,
+  type: ChartType.LINE,
+} as const;
 
 export const CHARTS: ChartTypeOption[] = [
   {
