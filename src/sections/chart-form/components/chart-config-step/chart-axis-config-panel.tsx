@@ -15,7 +15,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { ChartType } from '@/types/chart-type.enum';
 import type { AxisChartConfig } from '@/types/chart-config.types';
 
-import { legendPositionOptions } from '@/sections/chart-form/helpers';
+import { legendPositionOptions } from '@/helpers/charts.utils';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 // ----------------------------------------------------------------------

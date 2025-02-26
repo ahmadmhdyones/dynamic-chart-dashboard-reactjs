@@ -12,7 +12,7 @@ import FormControl from '@mui/material/FormControl';
 
 import type { FredFrequencyShort } from '@/types/fred-freq.enum';
 
-import { timeFrequencyOptions } from '@/sections/chart-form/helpers';
+import { timeFrequencyOptions } from '@/helpers/charts.utils';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 import ChartTypeConfigPanel from './chart-type-config-panel';

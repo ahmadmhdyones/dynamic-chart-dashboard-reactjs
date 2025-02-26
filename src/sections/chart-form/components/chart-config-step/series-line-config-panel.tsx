@@ -8,7 +8,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import type { LineSeriesConfig } from '@/types/series-config.types';
 
-import { lineStyleOptions } from '@/sections/chart-form/helpers';
+import { lineStyleOptions } from '@/helpers/charts.utils';
 
 // ----------------------------------------------------------------------
 

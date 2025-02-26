@@ -1,8 +1,8 @@
 import Grid from '@mui/material/Grid';
 
+import { createChart } from '@/helpers/chart-factory';
 import { configChartDefault } from '@/configs/charts.config';
 
-import { createChart } from './helpers';
 import ChartFormStepper from './components/chart-form-stepper';
 import { ChartFormProvider } from './contexts/chart-form-context';
 
