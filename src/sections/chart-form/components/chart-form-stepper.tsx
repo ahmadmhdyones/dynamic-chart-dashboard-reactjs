@@ -7,10 +7,11 @@ import Button from '@mui/material/Button';
 import Stepper from '@mui/material/Stepper';
 import StepLabel from '@mui/material/StepLabel';
 
+import ChartPreviewCard from '@/components/charts/chart-preview-card';
+
 import { CHART_TYPE_STEP_TITLE } from './chart-type-step/step';
 import { DATA_SOURCE_STEP_TITLE } from './data-source-step/step';
 import { ChartFormContext } from '../contexts/chart-form-context';
-import ChartPreviewCard from './chart-preview/chart-preview-card';
 import { CHART_CONFIG_STEP_TITLE } from './chart-config-step/step';
 
 // ----------------------------------------------------------------------
@@ -27,7 +28,7 @@ const steps = [CHART_TYPE_STEP_TITLE, DATA_SOURCE_STEP_TITLE, CHART_CONFIG_STEP_
 
 function ChartFormStepper() {
   const [activeStep, setActiveStep] = useState(0);
-  const { chartData, error, formData, isError, isLoading, submitForm } = use(ChartFormContext)!;
+  const { formData, submitForm } = use(ChartFormContext)!;
   const {
     config: { title },
     series: selectedSeries,
@@ -95,13 +96,7 @@ function ChartFormStepper() {
 
       {/* Chart Preview */}
       <Paper sx={{ p: 3 }}>
-        <ChartPreviewCard
-          chart={formData}
-          chartData={chartData}
-          error={error}
-          isError={isError}
-          isLoading={isLoading}
-        />
+        <ChartPreviewCard chart={formData} />
       </Paper>
     </Box>
   );

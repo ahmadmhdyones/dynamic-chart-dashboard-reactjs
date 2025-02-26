@@ -1,19 +1,15 @@
 import { createContext } from 'react';
 
+import type { Chart } from '@/types/chart.types';
 import type { ChartType } from '@/types/chart-type.enum';
 import type { ChartConfig } from '@/types/chart-config.types';
 import type { FredFrequencyShort } from '@/types/fred-freq.enum';
-import type { Chart, ChartDataPoint } from '@/types/chart.types';
 import type { SeriesConfig, BaseSeriesConfig } from '@/types/series-config.types';
 
 // ----------------------------------------------------------------------
 
 export interface ChartFormContextProps {
   formData: Chart;
-  chartData: ChartDataPoint[];
-  isLoading: boolean;
-  isError: boolean;
-  error: Error | null;
 
   // Chart type step
   setChartType: (type: ChartType) => void;
