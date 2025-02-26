@@ -10,6 +10,7 @@ import type { SeriesConfig, BaseSeriesConfig } from '@/types/series-config.types
 
 export interface ChartFormContextProps {
   formData: Chart;
+  isSaving: boolean;
 
   // Chart type step
   setChartType: (type: ChartType) => void;
