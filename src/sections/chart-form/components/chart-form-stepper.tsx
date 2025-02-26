@@ -27,16 +27,12 @@ const steps = [CHART_TYPE_STEP_TITLE, DATA_SOURCE_STEP_TITLE, CHART_CONFIG_STEP_
 
 function ChartFormStepper() {
   const [activeStep, setActiveStep] = useState(0);
+  const { chartData, error, formData, isError, isLoading, submitForm } = use(ChartFormContext)!;
   const {
-    chartData,
-    error,
-    formData: { chartConfig, chartTitle, chartType, series: selectedSeries },
-    isError,
-    isLoading,
-    submitForm,
-  } = use(ChartFormContext)!;
-
-  const { xAxisTitle, yAxisTitle } = chartConfig as { xAxisTitle: string; yAxisTitle: string };
+    config: { title },
+    series: selectedSeries,
+    type,
+  } = formData;
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -60,8 +56,8 @@ function ChartFormStepper() {
   };
 
   const isBackDisabled = activeStep === 0;
-  const isNextDisabled = (activeStep === 0 && !chartType) || (activeStep === 1 && selectedSeries.length === 0);
-  const isSubmitDisabled = selectedSeries.length === 0 || !chartTitle;
+  const isNextDisabled = (activeStep === 0 && !type) || (activeStep === 1 && selectedSeries.length === 0);
+  const isSubmitDisabled = selectedSeries.length === 0 || !title;
 
   return (
     <Box>
@@ -100,15 +96,11 @@ function ChartFormStepper() {
       {/* Chart Preview */}
       <Paper sx={{ p: 3 }}>
         <ChartPreviewCard
+          chart={formData}
           chartData={chartData}
-          chartTitle={chartTitle}
-          chartType={chartType}
           error={error}
           isError={isError}
           isLoading={isLoading}
-          series={selectedSeries}
-          xAxisTitle={xAxisTitle}
-          yAxisTitle={yAxisTitle}
         />
       </Paper>
     </Box>
