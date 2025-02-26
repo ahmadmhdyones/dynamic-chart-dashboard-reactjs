@@ -1,42 +1,45 @@
+import { use } from 'react';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import type { ChartTypeOption } from '@/types/chart.types';
-
-import type { ChartType } from '@/models';
+import { CHARTS } from '@/configs/charts.config';
+import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 import ChartTypeCard from './chart-type-card';
 
 // ----------------------------------------------------------------------
 
-export const CHART_TYPE_STEP_TITLE = 'Select Chart Type';
+export const CHART_TYPE_STEP_TITLE = 'Choose Chart Type';
 
 // ----------------------------------------------------------------------
 
-interface ChartTypeStepProps {
-  selectedType: ChartType;
-  onTypeChange: (type: ChartType) => void;
-  options: ChartTypeOption[];
-}
+function ChartTypeStep() {
+  const {
+    formData: { chartType },
+    setChartType,
+  } = use(ChartFormContext)!;
 
-function ChartTypeStep({ onTypeChange, options, selectedType }: ChartTypeStepProps) {
   return (
-    <Box sx={{ py: 2 }}>
+    <Box>
       <Typography gutterBottom variant='h6'>
         {CHART_TYPE_STEP_TITLE}
       </Typography>
       <Typography color='text.secondary' sx={{ mb: 3 }} variant='body2'>
-        Choose the type of chart that best represents your data.
+        Select the type of chart that best represents your data.
       </Typography>
 
       <Grid container spacing={3}>
-        {options.map(option => (
+        {CHARTS.map(option => (
           <Grid item key={option.value} md={4} sm={6} xs={12}>
             <ChartTypeCard
-              onSelect={() => option.supported && onTypeChange(option.value)}
-              option={option}
-              selected={selectedType === option.value}
+              description={option.description}
+              disabled={!option.supported}
+              icon={option.icon}
+              isSelected={chartType === option.value}
+              label={option.label}
+              onClick={() => option.supported && setChartType(option.value)}
             />
           </Grid>
         ))}
