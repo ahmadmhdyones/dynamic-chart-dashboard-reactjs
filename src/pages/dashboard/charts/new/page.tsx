@@ -12,9 +12,9 @@ function PageChartsNew() {
       breadcrumbs={[
         { path: paths.dashboard.root.to(), title: 'Dashboard' },
         { path: paths.dashboard.charts.root.to(), title: 'Charts' },
-        { path: paths.dashboard.charts.new.to(), title: 'New' },
+        { path: paths.dashboard.charts.new.to(), title: 'Create New Chart' },
       ]}
-      title='Create New Chart'
+      title=''
     >
       <MetaTags title='Create New Chart | DCDR' />
 
