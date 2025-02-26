@@ -4,7 +4,15 @@ import type { Chart } from '@/types/chart.types';
 import { ChartType } from '@/types/chart-type.enum';
 import type { ChartConfig } from '@/types/chart-config.types';
 import type { FredFrequencyShort } from '@/types/fred-freq.enum';
-import type { SeriesConfig, BaseSeriesConfig } from '@/types/series-config.types';
+import type {
+  SeriesConfig,
+  BarSeriesConfig,
+  PieSeriesConfig,
+  BaseSeriesConfig,
+  LineSeriesConfig,
+  ScatterSeriesConfig,
+  TreemapSeriesConfig,
+} from '@/types/series-config.types';
 
 import { getRandomColor } from '@/helpers/color.utils';
 import { configChartDefault } from '@/configs/charts.config';
@@ -15,42 +23,54 @@ export function createDefaultSeriesConfig<T extends ChartType>(
   chartType: T,
   baseConfig: BaseSeriesConfig = { color: getRandomColor(), data: undefined, id: uuidv4(), label: '', opacity: 1 }
 ): SeriesConfig<T> {
+  let seriesConfig;
+
   switch (chartType) {
     case ChartType.LINE:
-      return {
+      seriesConfig = {
         ...baseConfig,
         lineType: 'solid',
         lineWidth: 2,
-      } as SeriesConfig<T>;
+      } as LineSeriesConfig;
+
+      return seriesConfig as SeriesConfig<T>;
 
     case ChartType.BAR:
-      return {
+      seriesConfig = {
         ...baseConfig,
         barRadius: 0,
         barWidth: 20,
-      } as SeriesConfig<T>;
+      } as BarSeriesConfig;
+
+      return seriesConfig as SeriesConfig<T>;
 
     case ChartType.PIE:
-      return {
+      seriesConfig = {
         ...baseConfig,
         innerRadius: 0,
         outerRadius: 100,
         padAngle: 0.01,
-      } as SeriesConfig<T>;
+      } as PieSeriesConfig;
+
+      return seriesConfig as SeriesConfig<T>;
 
     case ChartType.SCATTER:
-      return {
+      seriesConfig = {
         ...baseConfig,
         symbolSize: 6,
         symbolType: 'circle',
-      } as SeriesConfig<T>;
+      } as ScatterSeriesConfig;
+
+      return seriesConfig as SeriesConfig<T>;
 
     case ChartType.TREEMAP:
-      return {
+      seriesConfig = {
         ...baseConfig,
         borderWidth: 1,
         padding: 2,
-      } as SeriesConfig<T>;
+      } as TreemapSeriesConfig;
+
+      return seriesConfig as SeriesConfig<T>;
 
     default:
       return baseConfig as unknown as SeriesConfig<T>;
