@@ -14,6 +14,7 @@ import type { IChart } from '@/types/models/chart.types';
 export const queryKeys = {
   // Charts
   chart: (id: IChart['id']) => `chart-${id}`,
+  chartData: () => 'chart-data',
   charts: () => 'charts',
 
   // Fred
