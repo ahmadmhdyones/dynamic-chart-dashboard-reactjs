@@ -11,27 +11,35 @@ import {
   LineChart as RechartsLineChart,
 } from 'recharts';
 
-import type { Chart } from '@/types/chart.types';
 import { ChartType } from '@/types/chart-type.enum';
+import type { Chart, ChartDataPoint } from '@/types/chart.types';
 
 // ----------------------------------------------------------------------
 
+interface ChartOptions {
+  chartData?: ChartDataPoint[];
+  height?: number | string;
+  width?: number | string;
+}
+
 class ChartFactory {
-  static createChart(chart: Chart) {
+  static createChart(chart: Chart, options: ChartOptions = {}) {
+    const { chartData = chart.data || [], height = 400, width = '100%' } = options;
+
     switch (chart.type) {
       case ChartType.LINE:
-        return this.createLineChart(chart as Chart<ChartType.LINE>);
+        return this.createLineChart(chart as Chart<ChartType.LINE>, { chartData, height, width });
       case ChartType.BAR:
-        return this.createBarChart(chart as Chart<ChartType.BAR>);
+        return this.createBarChart(chart as Chart<ChartType.BAR>, { chartData, height, width });
       default:
         return <div style={{ padding: '20px', textAlign: 'center' }}>Unsupported chart type: {chart.type}</div>;
     }
   }
 
-  private static createLineChart(chart: Chart<ChartType.LINE>) {
+  private static createLineChart(chart: Chart<ChartType.LINE>, { chartData, height, width }: ChartOptions) {
     return (
-      <ResponsiveContainer height={400} width='100%'>
-        <RechartsLineChart data={chart.data} margin={{ bottom: 50, left: 20, right: 30, top: 20 }}>
+      <ResponsiveContainer height={height} width={width}>
+        <RechartsLineChart data={chartData} margin={{ bottom: 50, left: 20, right: 30, top: 20 }}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis
             dataKey='date'
@@ -59,10 +67,10 @@ class ChartFactory {
     );
   }
 
-  private static createBarChart(chart: Chart<ChartType.BAR>) {
+  private static createBarChart(chart: Chart<ChartType.BAR>, { chartData, height, width }: ChartOptions) {
     return (
-      <ResponsiveContainer height={400} width='100%'>
-        <RechartsBarChart data={chart.data} margin={{ bottom: 50, left: 20, right: 30, top: 20 }}>
+      <ResponsiveContainer height={height} width={width}>
+        <RechartsBarChart data={chartData} margin={{ bottom: 50, left: 20, right: 30, top: 20 }}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis
             dataKey='date'
