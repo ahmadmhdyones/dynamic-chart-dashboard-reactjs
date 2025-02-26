@@ -55,8 +55,10 @@ function DataSourceStep() {
     setSelectedSeriesInfos(prev => [...prev, series]);
     addSeries({
       color: getRandomColor(),
+      data: series,
       id: series.id,
-      title: series.title,
+      label: series.title,
+      opacity: 1,
     });
   };
 

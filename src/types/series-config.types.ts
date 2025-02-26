@@ -5,9 +5,10 @@ import type { ChartType } from './chart-type.enum';
 // ----------------------------------------------------------------------
 
 export interface BaseSeriesConfig {
+  color: string;
+  data?: IFredSeries;
   id: IFredSeries['id'];
   label: string;
-  color: string;
   opacity: number;
 }
 
@@ -45,4 +46,4 @@ export type SeriesConfigMap = {
   [ChartType.TREEMAP]: TreemapSeriesConfig;
 };
 
-export type SeriesConfig<T extends ChartType> = SeriesConfigMap[T];
+export type SeriesConfig<T extends ChartType = ChartType> = SeriesConfigMap[T];

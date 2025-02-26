@@ -13,7 +13,7 @@ import { configChartDefault } from '@/configs/charts.config';
 
 export function createDefaultSeriesConfig<T extends ChartType>(
   chartType: T,
-  baseConfig: BaseSeriesConfig
+  baseConfig: BaseSeriesConfig = { color: getRandomColor(), data: undefined, id: uuidv4(), label: '', opacity: 1 }
 ): SeriesConfig<T> {
   switch (chartType) {
     case ChartType.LINE:

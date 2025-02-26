@@ -1,4 +1,5 @@
-import type { BaseChart } from '@/types/chart.types';
+import type { Chart } from '@/types/chart.types';
+import type { ChartType } from '@/types/chart-type.enum';
 
 import { PageType } from './pages.enum';
 
@@ -29,7 +30,7 @@ export const paths = {
       id: {
         edit: {
           id: PageType.ChartsEditPage,
-          to: (chartId: BaseChart['id']) => `${ROOTS.DASHBOARD}/charts/${chartId}/edit`,
+          to: (chartId: Chart<ChartType>['id']) => `${ROOTS.DASHBOARD}/charts/${chartId}/edit`,
         },
       },
       new: { id: PageType.ChartsNewPage, to: () => `${ROOTS.DASHBOARD}/charts/new` },

@@ -38,4 +38,4 @@ export type ChartConfigMap = {
   [ChartType.TREEMAP]: TreemapChartConfig;
 };
 
-export type ChartConfig<T extends ChartType> = ChartConfigMap[T];
+export type ChartConfig<T extends ChartType = ChartType> = ChartConfigMap[T];

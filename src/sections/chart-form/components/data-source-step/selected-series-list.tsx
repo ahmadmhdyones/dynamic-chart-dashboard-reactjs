@@ -7,13 +7,13 @@ import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import type { SeriesConfig } from '@/sections/chart-form/contexts/chart-form-context';
+import type { BaseSeriesConfig } from '@/types/series-config.types';
 
 // ----------------------------------------------------------------------
 
 interface Props {
-  selectedSeries: SeriesConfig[];
-  onRemoveSeries: (seriesId: string) => void;
+  selectedSeries: BaseSeriesConfig[];
+  onRemoveSeries: (seriesId: BaseSeriesConfig['id']) => void;
 }
 
 function SelectedSeriesList({ onRemoveSeries, selectedSeries }: Props) {
@@ -62,13 +62,13 @@ function SelectedSeriesList({ onRemoveSeries, selectedSeries }: Props) {
                       width: 16,
                     }}
                   />
-                  <Tooltip title={series.title}>
+                  <Tooltip title={series.data!.title}>
                     <Typography
                       noWrap
                       sx={{ maxWidth: { lg: '300px', md: '200px', sm: '250px', xs: '180px' } }}
                       variant='subtitle2'
                     >
-                      {series.title}
+                      {series.data!.title}
                     </Typography>
                   </Tooltip>
                 </Box>
