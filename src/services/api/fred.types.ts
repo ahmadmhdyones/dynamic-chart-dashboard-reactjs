@@ -1,3 +1,7 @@
+import type { FredFrequencyShort } from '@/types/fred-freq.enum';
+
+// ----------------------------------------------------------------------
+
 export interface IFredSeries {
   id: string;
   realtime_start: string; // Format: YYYY-MM-DD
@@ -6,7 +10,7 @@ export interface IFredSeries {
   observation_start: string; // Format: YYYY-MM-DD
   observation_end: string; // Format: YYYY-MM-DD
   frequency: string;
-  frequency_short: string;
+  frequency_short: FredFrequencyShort;
   units: string;
   units_short: string;
   seasonal_adjustment: string;
