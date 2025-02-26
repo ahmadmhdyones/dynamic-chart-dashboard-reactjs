@@ -37,10 +37,6 @@ export const paths = {
       root: { id: PageType.ChartsPage, to: () => `${ROOTS.DASHBOARD}/charts` },
     },
     root: { id: PageType.OverviewPage, to: () => `${ROOTS.DASHBOARD}` },
-    settings: {
-      id: PageType.SettingsPage,
-      to: () => `${ROOTS.DASHBOARD}/settings`,
-    },
   },
   page404: { id: PageType.Page404, to: () => `/not-found` },
   root: { id: PageType.HomePage, to: () => `/` },

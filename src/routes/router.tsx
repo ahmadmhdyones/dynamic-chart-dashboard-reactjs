@@ -15,7 +15,6 @@ const PageOverview = lazy(() => import('@/pages/dashboard/(overview)/page'));
 const PageCharts = lazy(() => import('@/pages/dashboard/charts/page'));
 const PageChartsNew = lazy(() => import('@/pages/dashboard/charts/new/page'));
 const PageChartsEdit = lazy(() => import('@/pages/dashboard/charts/[id]/edit/page'));
-const PageSettings = lazy(() => import('@/pages/dashboard/settings/page'));
 const Page404 = lazy(() => import('@/pages/not-found'));
 
 // ----------------------------------------------------------------------
@@ -32,7 +31,6 @@ const routesDashboard = [
     ),
     children: [
       { index: true, Component: PageOverview },
-      { path: 'settings', Component: PageSettings },
       {
         path: 'charts',
         children: [
