@@ -1,5 +1,8 @@
+import { Suspense } from 'react';
+
 import Grid from '@mui/material/Grid';
 
+import PageLoader from '@/components/ui/page-loader';
 import { createChart } from '@/helpers/chart-factory';
 import { configChartDefault } from '@/configs/charts.config';
 
@@ -13,7 +16,9 @@ export default function SectionChartForm() {
     <ChartFormProvider initialFormData={createChart(configChartDefault.type)}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <ChartFormStepper />
+          <Suspense fallback={<PageLoader />}>
+            <ChartFormStepper />
+          </Suspense>
         </Grid>
       </Grid>
     </ChartFormProvider>
