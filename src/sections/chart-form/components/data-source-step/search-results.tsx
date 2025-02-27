@@ -23,11 +23,13 @@ interface SearchResultsProps {
   onLoadMore: () => void;
   hasMoreResults: boolean;
   isLoadingMore?: boolean;
+  hasReachedMaxSeries?: boolean;
 }
 
 function SearchResults({
   error,
   hasMoreResults,
+  hasReachedMaxSeries = false,
   isError,
   isLoading,
   isLoadingMore = false,
@@ -81,10 +83,21 @@ function SearchResults({
 
   return (
     <>
+      {hasReachedMaxSeries && (
+        <Alert severity='warning' sx={{ mb: 3 }}>
+          You've reached the maximum number of data series allowed. Remove a series to add a new one.
+        </Alert>
+      )}
+
       <Grid container spacing={3}>
         {results.map(series => (
           <Grid item key={series.id} md={6} xs={12}>
-            <SeriesCard isSelected={selectedIds.has(series.id)} onSelect={onSeriesSelect} series={series} />
+            <SeriesCard
+              isDisabled={hasReachedMaxSeries && !selectedIds.has(series.id)}
+              isSelected={selectedIds.has(series.id)}
+              onSelect={onSeriesSelect}
+              series={series}
+            />
           </Grid>
         ))}
       </Grid>

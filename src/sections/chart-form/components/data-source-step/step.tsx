@@ -78,6 +78,9 @@ function DataSourceStep() {
     }
   };
 
+  // Check if we've reached the maximum number of data series allowed
+  const hasReachedMaxSeries = selectedSeriesInfos.length >= CHART_MAX_DATA_SERIES;
+
   return (
     <Box sx={{ py: 2 }}>
       <Typography gutterBottom variant='h6'>
@@ -127,10 +130,10 @@ function DataSourceStep() {
       </Paper>
 
       <ScrollableContainer sx={{ height: 'inherit', maxHeight: '455px' }}>
-        {/* TODO: disable selection of series if we've reached the max */}
         <SearchResults
           error={error}
           hasMoreResults={hasMoreResults}
+          hasReachedMaxSeries={hasReachedMaxSeries}
           isError={isError}
           isLoading={isLoading}
           isLoadingMore={isLoadingMore}

@@ -16,23 +16,34 @@ import type { IFredSeries } from '@/services/api/fred.types';
 interface Props {
   series: IFredSeries;
   isSelected: boolean;
+  isDisabled?: boolean;
   onSelect: (series: IFredSeries) => void;
 }
 
-function SeriesCard({ isSelected, onSelect, series }: Props) {
+function SeriesCard({ isDisabled = false, isSelected, onSelect, series }: Props) {
+  const handleSelect = () => {
+    if (!isDisabled || isSelected) {
+      onSelect(series);
+    }
+  };
+
   return (
     <Card
-      onClick={() => onSelect(series)}
+      onClick={handleSelect}
       sx={{
-        '&:hover': { borderColor: 'primary.main', boxShadow: 2 },
+        '&:hover': {
+          borderColor: isDisabled && !isSelected ? 'divider' : 'primary.main',
+          boxShadow: isDisabled && !isSelected ? 1 : 2,
+        },
         'border': '1px solid',
         'borderColor': isSelected ? 'primary.main' : 'divider',
         'boxShadow': isSelected ? 3 : 1,
-        'cursor': 'pointer',
+        'cursor': isDisabled && !isSelected ? 'not-allowed' : 'pointer',
         'display': 'flex',
         'flexDirection': 'column',
         'height': '100%',
         'mb': 2,
+        'opacity': isDisabled && !isSelected ? 0.7 : 1,
         'transition': 'all 0.2s',
       }}
     >
@@ -50,7 +61,7 @@ function SeriesCard({ isSelected, onSelect, series }: Props) {
             </Typography>
           </Box>
           <FormControlLabel
-            control={<Checkbox checked={isSelected} onChange={() => onSelect(series)} />}
+            control={<Checkbox checked={isSelected} disabled={isDisabled && !isSelected} onChange={handleSelect} />}
             label=''
             onClick={e => e.stopPropagation()}
             sx={{ m: 0 }}
