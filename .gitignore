@@ -27,6 +27,8 @@ dist-ssr
 # Env files (can opt-in for committing if needed)
 .env*
 !.env.example
+.env.local
+.env.*.local
 
 # Editor directories and files
 .idea
@@ -42,3 +44,5 @@ dist-ssr
 .vercel
 .husky/_
 *.tsbuildinfo
+coverage/
+*.eslintcache

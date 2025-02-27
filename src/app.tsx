@@ -1,30 +1,51 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './app.css';
+import { Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { ReactRouterAppProvider } from '@toolpad/core/react-router';
 
-function App() {
-  const [count, setCount] = useState(0);
+import { useTheme } from '@mui/material/styles';
+
+import Logo from '@/components/ui/logo';
+import { SITE } from '@/configs/site.config';
+import PageLoader from '@/components/ui/page-loader';
+import { configToast } from '@/configs/global.config';
+import { useResponsive } from '@/hooks/use-responsive';
+import { getStrShortcut } from '@/helpers/string.utils';
+import { NAVIGATION } from '@/configs/navigation.config';
+
+// ----------------------------------------------------------------------
+
+interface Props {
+  readonly children: React.ReactNode;
+}
+
+function App({ children }: Props) {
+  const theme = useTheme();
+  const isMobile = useResponsive('down', 'sm');
 
   return (
-    <>
-      <div>
-        <a href='https://vite.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-    </>
+    <Suspense fallback={<PageLoader />}>
+      <ReactRouterAppProvider
+        branding={{
+          logo: <Logo disabledLink />,
+          title: isMobile ? getStrShortcut(SITE.name) : SITE.name,
+        }}
+        navigation={NAVIGATION}
+        theme={theme} // TODO: FIX: dark/light mode isn't working in custom toolpad theme
+      >
+        {children}
+      </ReactRouterAppProvider>
+
+      <Toaster
+        position='top-right'
+        reverseOrder={false}
+        toastOptions={{
+          duration: configToast.duration,
+          error: { style: { borderLeft: `4px solid ${theme.palette.error.main}` } },
+          style: { background: theme.palette.background.paper, color: theme.palette.text.primary },
+          success: { style: { borderLeft: `4px solid ${theme.palette.success.main}` } },
+        }}
+      />
+    </Suspense>
   );
 }
 
