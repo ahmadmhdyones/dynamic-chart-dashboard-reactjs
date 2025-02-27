@@ -10,6 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { getRandomColor } from '@/helpers/color.utils';
+import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import type { IFredSeries } from '@/services/api/fred.types';
 import { CHART_MAX_DATA_SERIES } from '@/configs/charts.config';
 import ScrollableContainer from '@/components/common/scrollable-container';
@@ -26,6 +27,8 @@ export const DATA_SOURCE_STEP_TITLE = 'Choose Data Source';
 // ----------------------------------------------------------------------
 
 function DataSourceStep() {
+  useScrollToTop();
+
   const {
     addSeries,
     formData: { series: selectedSeries },

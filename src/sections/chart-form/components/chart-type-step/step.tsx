@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import { CHARTS } from '@/configs/charts.config';
+import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 import ChartTypeCard from './chart-type-card';
@@ -16,6 +17,8 @@ export const CHART_TYPE_STEP_TITLE = 'Choose Chart Type';
 // ----------------------------------------------------------------------
 
 function ChartTypeStep() {
+  useScrollToTop();
+
   const {
     formData: { type },
     setChartType,
