@@ -1,1 +1,3 @@
-export { default as SectionChartForm } from './section';
+import SectionChartForm from './view';
+
+export default SectionChartForm;

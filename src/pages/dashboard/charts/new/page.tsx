@@ -2,7 +2,7 @@ import { PageContainer } from '@toolpad/core/PageContainer';
 
 import { paths } from '@/helpers/map-routes';
 import MetaTags from '@/components/common/meta-tags';
-import { SectionChartForm } from '@/sections/chart-form';
+import SectionChartForm from '@/sections/chart-form';
 
 // ----------------------------------------------------------------------
 

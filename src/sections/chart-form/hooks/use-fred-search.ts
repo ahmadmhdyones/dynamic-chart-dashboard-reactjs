@@ -43,7 +43,7 @@ export const useFredSearch = ({ initialPage = 1, initialSearchTerm = '', pageSiz
         search_text: debouncedSearchTerm,
       });
     },
-    queryKey: [queryKeys.fredSeries(), debouncedSearchTerm, page, pageSize],
+    queryKey: [queryKeys.fredSeries(debouncedSearchTerm, page, pageSize)],
   });
 
   // Track loading state for pagination

@@ -64,6 +64,6 @@ export const useChartData = ({ chart, enabled = true }: UseChartDataProps) => {
 
       return chartDataArray;
     },
-    queryKey: [queryKeys.chartData(), series.length, series.map(s => s.id).join(','), timeFrequency],
+    queryKey: [queryKeys.chartData(series.length, series.map(s => s.id).join(','), timeFrequency)],
   });
 };
