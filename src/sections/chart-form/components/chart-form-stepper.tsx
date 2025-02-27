@@ -8,11 +8,12 @@ import Stepper from '@mui/material/Stepper';
 import StepLabel from '@mui/material/StepLabel';
 import CircularProgress from '@mui/material/CircularProgress';
 
+import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import ChartPreviewCard from '@/components/charts/chart-preview-card';
+import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 import { CHART_TYPE_STEP_TITLE } from './chart-type-step/step';
 import { DATA_SOURCE_STEP_TITLE } from './data-source-step/step';
-import { ChartFormContext } from '../contexts/chart-form-context';
 import { CHART_CONFIG_STEP_TITLE } from './chart-config-step/step';
 
 // ----------------------------------------------------------------------
@@ -35,6 +36,8 @@ function ChartFormStepper() {
     series: selectedSeries,
     type,
   } = formData;
+
+  useScrollToTop([activeStep]);
 
   const handleNext = () => {
     setActiveStep(prevActiveStep => prevActiveStep + 1);

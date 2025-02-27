@@ -12,7 +12,6 @@ import FormControl from '@mui/material/FormControl';
 
 import type { FredFrequencyShort } from '@/types/fred-freq.enum';
 
-import { useScrollToTop } from '@/hooks/use-scroll-to-top';
 import { timeFrequencyOptions } from '@/helpers/charts.utils';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
@@ -26,8 +25,6 @@ export const CHART_CONFIG_STEP_TITLE = 'Configure Chart';
 // ----------------------------------------------------------------------
 
 function ChartConfigStep() {
-  useScrollToTop();
-
   const { formData, setTimeFrequency, updateChartConfig, updateSeriesConfig: updateSeries } = use(ChartFormContext)!;
 
   const {
