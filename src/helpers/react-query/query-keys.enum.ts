@@ -1,4 +1,5 @@
-import type { IChart } from '@/types/models/chart.types';
+import type { Chart } from '@/types/chart.types';
+import type { FredFrequencyShort } from '@/types/fred-freq.enum';
 
 // ----------------------------------------------------------------------
 
@@ -13,10 +14,12 @@ import type { IChart } from '@/types/models/chart.types';
 
 export const queryKeys = {
   // Charts
-  chart: (id: IChart['id']) => `chart-${id}`,
-  chartData: () => 'chart-data',
+  chart: (id: Chart['id']) => `chart-${id}`,
+  chartData: (seriesLength: number, seriesIds: string, timeFrequency: FredFrequencyShort) =>
+    `chart-data-${seriesLength}-${seriesIds}-${timeFrequency}`,
   charts: () => 'charts',
-
-  // Fred
-  fredSeries: () => 'fred-series',
+  deleteChart: (id: string) => `delete-chart-${id}`,
+  fredSeries: (searchTerm: string, page: number, pageSize: number) => `fred-series-${searchTerm}-${page}-${pageSize}`,
+  saveChart: () => 'save-chart',
+  updateChart: (id: string) => `update-chart-${id}`,
 } as const;
