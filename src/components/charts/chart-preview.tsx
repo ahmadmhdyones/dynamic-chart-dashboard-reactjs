@@ -7,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import type { Chart } from '@/types/chart.types';
 
 import { ChartFactory } from '@/helpers/chart-factory';
-import { useChartData } from '@/sections/common/hooks/use-chart-data';
+import { useChartData } from '@/services/api/hooks/use-chart-data';
 
 // ----------------------------------------------------------------------
 

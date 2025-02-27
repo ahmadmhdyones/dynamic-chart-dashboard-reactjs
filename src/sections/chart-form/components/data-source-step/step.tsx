@@ -12,8 +12,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { getRandomColor } from '@/helpers/color.utils';
 import type { IFredSeries } from '@/services/api/fred.types';
 import { CHART_MAX_DATA_SERIES } from '@/configs/charts.config';
+import { useFredSearch } from '@/services/api/hooks/use-fred-search';
 import ScrollableContainer from '@/components/common/scrollable-container';
-import { useFredSearch } from '@/sections/chart-form/hooks/use-fred-search';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 import SearchResults from './search-results';

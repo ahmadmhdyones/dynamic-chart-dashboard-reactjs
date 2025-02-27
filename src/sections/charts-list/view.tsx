@@ -11,8 +11,8 @@ import Typography from '@mui/material/Typography';
 import type { Chart } from '@/types/chart.types';
 
 import { paths } from '@/helpers/map-routes';
-import { useCharts } from '@/sections/common/hooks/use-charts';
-import { useDeleteChart } from '@/sections/common/hooks/use-delete-chart';
+import { useCharts } from '@/services/api/hooks/use-charts';
+import { useDeleteChart } from '@/services/api/hooks/use-delete-chart';
 
 import ChartsGrid from './components/charts-grid';
 import ChartFullscreenDialog from './components/chart-fullscreen-dialog';

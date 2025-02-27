@@ -9,8 +9,8 @@ import type { FredFrequencyShort } from '@/types/fred-freq.enum';
 import type { SeriesConfig, BaseSeriesConfig } from '@/types/series-config.types';
 
 import { paths } from '@/helpers/map-routes';
-import { useSaveChart } from '@/sections/common/hooks/use-save-chart';
-import { useUpdateChart } from '@/sections/common/hooks/use-update-chart';
+import { useSaveChart } from '@/services/api/hooks/use-save-chart';
+import { useUpdateChart } from '@/services/api/hooks/use-update-chart';
 import { createChart, createDefaultChartConfig, createDefaultSeriesConfig } from '@/helpers/chart-factory';
 
 import { ChartFormContext } from './chart-form-context';
