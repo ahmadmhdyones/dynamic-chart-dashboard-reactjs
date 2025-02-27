@@ -5,7 +5,6 @@ import Skeleton from '@mui/material/Skeleton';
 
 function SeriesCardSkeleton() {
   return (
-    // TODO: fix skeleton wave animation
     <Box sx={{ border: '1px solid', borderColor: 'divider', borderRadius: 1, height: '100%', p: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
         <Skeleton animation='wave' height={30} width='70%' />
