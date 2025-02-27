@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 
 import type { Chart } from '@/types/chart.types';
 import { ChartType } from '@/types/chart-type.enum';
@@ -6,20 +8,30 @@ import type { ChartConfig } from '@/types/chart-config.types';
 import type { FredFrequencyShort } from '@/types/fred-freq.enum';
 import type { SeriesConfig, BaseSeriesConfig } from '@/types/series-config.types';
 
+import { paths } from '@/helpers/map-routes';
+import { useSaveChart } from '@/sections/charts-list/hooks/use-save-chart';
+import { useUpdateChart } from '@/sections/charts-list/hooks/use-update-chart';
 import { createChart, createDefaultChartConfig, createDefaultSeriesConfig } from '@/helpers/chart-factory';
 
 import { ChartFormContext } from './chart-form-context';
-import type { ChartFormContextProps } from './chart-form-context';
+import type { ChartFormMode, ChartFormContextProps } from './chart-form-context';
 
 // ----------------------------------------------------------------------
 
-interface ChartFormProviderProps {
+interface Props {
   children: React.ReactNode;
   initialFormData?: Chart;
+  mode?: ChartFormMode;
 }
 
-export function ChartFormProvider({ children, initialFormData = createChart(ChartType.LINE) }: ChartFormProviderProps) {
+export function ChartFormProvider({ children, initialFormData = createChart(ChartType.LINE), mode = 'create' }: Props) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<ChartFormContextProps['formData']>(initialFormData);
+
+  const { isPending: isSavingNew, mutateAsync: saveChart } = useSaveChart();
+  const { isPending: isUpdating, mutateAsync: updateChart } = useUpdateChart();
+
+  const isSaving = isSavingNew || isUpdating;
 
   // Chart type step
   const setChartType = (type: ChartType) => {
@@ -35,6 +47,7 @@ export function ChartFormProvider({ children, initialFormData = createChart(Char
     const newSeries: SeriesConfig = {
       ...createDefaultSeriesConfig(formData.type),
       ...series,
+      label: `S${formData.series.length + 1}`,
     };
 
     setFormData(prev => ({
@@ -51,13 +64,6 @@ export function ChartFormProvider({ children, initialFormData = createChart(Char
   };
 
   // Chart config step
-  const updateSeries = (seriesId: string, config: Partial<SeriesConfig>) => {
-    setFormData(prev => ({
-      ...prev,
-      series: prev.series.map(s => (s.id === seriesId ? { ...s, ...config } : s)),
-    }));
-  };
-
   const updateTypedConfig = <T extends ChartType>(config: Partial<ChartConfig<T>>) => {
     setFormData(prev => ({
       ...prev,
@@ -69,7 +75,10 @@ export function ChartFormProvider({ children, initialFormData = createChart(Char
   };
 
   const updateTypedSeries = <T extends ChartType>(seriesId: SeriesConfig['id'], config: Partial<SeriesConfig<T>>) => {
-    updateSeries(seriesId, config);
+    setFormData(prev => ({
+      ...prev,
+      series: prev.series.map(s => (s.id === seriesId ? { ...s, ...config } : s)),
+    }));
   };
 
   const setTimeFrequency = (timeFrequency: FredFrequencyShort) => {
@@ -81,14 +90,25 @@ export function ChartFormProvider({ children, initialFormData = createChart(Char
     setFormData(initialFormData);
   };
 
-  const submitForm = () => {
-    // Here you would typically submit the form data to an API
-    console.log('Submitting form data:', formData);
+  const submitForm = async () => {
+    try {
+      if (mode === 'create') {
+        await saveChart(formData);
+      } else {
+        await updateChart({ data: formData, id: formData.id });
+      }
+      navigate(paths.dashboard.charts.root.to());
+    } catch (error) {
+      console.error('Error saving chart:', error);
+      toast.error(`Error ${mode === 'create' ? 'creating' : 'updating'} chart`);
+    }
   };
 
   const value: ChartFormContextProps = {
     addSeries,
     formData,
+    isSaving,
+    mode,
     removeSeries,
     resetForm,
     setChartType,

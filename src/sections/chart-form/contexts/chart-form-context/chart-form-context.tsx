@@ -8,9 +8,12 @@ import type { SeriesConfig, BaseSeriesConfig } from '@/types/series-config.types
 
 // ----------------------------------------------------------------------
 
+export type ChartFormMode = 'create' | 'edit';
+
 export interface ChartFormContextProps {
   formData: Chart;
   isSaving: boolean;
+  mode: ChartFormMode;
 
   // Chart type step
   setChartType: (type: ChartType) => void;

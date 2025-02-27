@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Stepper from '@mui/material/Stepper';
 import StepLabel from '@mui/material/StepLabel';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import ChartPreviewCard from '@/components/charts/chart-preview-card';
 
@@ -28,7 +29,7 @@ const steps = [CHART_TYPE_STEP_TITLE, DATA_SOURCE_STEP_TITLE, CHART_CONFIG_STEP_
 
 function ChartFormStepper() {
   const [activeStep, setActiveStep] = useState(0);
-  const { formData, submitForm } = use(ChartFormContext)!;
+  const { formData, isSaving, mode, submitForm } = use(ChartFormContext)!;
   const {
     config: { title },
     series: selectedSeries,
@@ -56,9 +57,10 @@ function ChartFormStepper() {
     }
   };
 
-  const isBackDisabled = activeStep === 0;
-  const isNextDisabled = (activeStep === 0 && !type) || (activeStep === 1 && selectedSeries.length === 0);
-  const isSubmitDisabled = selectedSeries.length === 0 || !title;
+  const isBackDisabled = activeStep === 0 || isSaving;
+  const isNextDisabled = (activeStep === 0 && !type) || (activeStep === 1 && selectedSeries.length === 0) || isSaving;
+  const isSubmitDisabled = selectedSeries.length === 0 || !title || isSaving;
+  const submitButtonText = isSaving ? 'Saving...' : mode === 'create' ? 'Create Chart' : 'Update Chart';
 
   return (
     <Box>
@@ -82,8 +84,13 @@ function ChartFormStepper() {
             </Button>
 
             {activeStep === steps.length - 1 ? (
-              <Button disabled={isSubmitDisabled} onClick={submitForm} variant='contained'>
-                Create Chart
+              <Button
+                disabled={isSubmitDisabled}
+                onClick={submitForm}
+                startIcon={isSaving ? <CircularProgress color='inherit' size={20} /> : null}
+                variant='contained'
+              >
+                {submitButtonText}
               </Button>
             ) : (
               <Button disabled={isNextDisabled} onClick={handleNext} variant='contained'>
