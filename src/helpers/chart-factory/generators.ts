@@ -86,7 +86,7 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
         legendPosition: 'right',
         showLegend: true,
         showTooltip: true,
-        title: '',
+        title: 'New Chart',
         xAxisTitle: 'Date',
         yAxisTitle: 'Value',
       } as ChartConfig<T>;
@@ -97,7 +97,7 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
         legendPosition: 'right',
         showLabels: true,
         showLegend: true,
-        title: '',
+        title: 'New Chart',
       } as ChartConfig<T>;
 
     case ChartType.SCATTER:
@@ -108,7 +108,7 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
         showLegend: true,
         showRegressionLine: false,
         showTooltip: true,
-        title: '',
+        title: 'New Chart',
         xAxisTitle: 'Date',
         yAxisTitle: 'Value',
       } as ChartConfig<T>;
@@ -117,7 +117,7 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
       return {
         legendPosition: 'bottom',
         showLabels: true,
-        title: '',
+        title: 'New Chart',
       } as ChartConfig<T>;
 
     default:
