@@ -3,6 +3,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 
 import { paths } from '@/helpers/map-routes';
+import { QueryParams } from '@/helpers/map-params/query-params.enum';
 
 import StatsCard from './StatsCard';
 
@@ -35,8 +36,8 @@ function ChartTypeStats({ barCharts, isLoading, lineCharts, totalCharts }: Chart
       <Grid item md={4} xs={12}>
         <StatsCard
           buttonIcon={<ShowChartIcon fontSize='small' />}
-          buttonLink={paths.dashboard.charts.root.to()}
-          buttonText='View Charts'
+          buttonLink={`${paths.dashboard.charts.root.to()}?${QueryParams.ChartType}=line`}
+          buttonText='View Line Charts'
           icon={<ShowChartIcon fontSize='large' />}
           iconBgColor='success.lighter'
           iconColor='success.main'
@@ -49,8 +50,8 @@ function ChartTypeStats({ barCharts, isLoading, lineCharts, totalCharts }: Chart
       <Grid item md={4} xs={12}>
         <StatsCard
           buttonIcon={<BarChartIcon fontSize='small' />}
-          buttonLink={paths.dashboard.charts.root.to()}
-          buttonText='View Charts'
+          buttonLink={`${paths.dashboard.charts.root.to()}?${QueryParams.ChartType}=bar`}
+          buttonText='View Bar Charts'
           icon={<BarChartIcon fontSize='large' />}
           iconBgColor='warning.lighter'
           iconColor='warning.main'

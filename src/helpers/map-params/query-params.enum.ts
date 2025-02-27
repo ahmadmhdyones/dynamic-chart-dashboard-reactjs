@@ -11,4 +11,5 @@
 
 export enum QueryParams {
   ChartId = 'chart_id',
+  ChartType = 'chart_type',
 }
