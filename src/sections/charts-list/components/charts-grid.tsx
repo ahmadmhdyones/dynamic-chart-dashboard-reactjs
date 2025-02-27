@@ -18,9 +18,19 @@ interface Props {
   onDelete?: (chart: Chart) => void;
   onFullscreen?: (chart: Chart) => void;
   onDownload?: (chart: Chart) => void;
+  isDeleting?: boolean;
 }
 
-export default function ChartsGrid({ charts, error, isLoading, onDelete, onDownload, onEdit, onFullscreen }: Props) {
+export default function ChartsGrid({
+  charts,
+  error,
+  isDeleting,
+  isLoading,
+  onDelete,
+  onDownload,
+  onEdit,
+  onFullscreen,
+}: Props) {
   if (isLoading) {
     return (
       <Grid container spacing={3}>
@@ -47,6 +57,7 @@ export default function ChartsGrid({ charts, error, isLoading, onDelete, onDownl
         <Grid item key={chart.id} sm={6} xs={12}>
           <ChartGridItem
             chart={chart}
+            disableActions={isDeleting}
             onDelete={onDelete}
             onDownload={onDownload}
             onEdit={onEdit}

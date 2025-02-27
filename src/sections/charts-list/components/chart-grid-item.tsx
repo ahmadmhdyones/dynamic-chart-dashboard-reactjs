@@ -26,9 +26,17 @@ interface Props {
   onDelete?: (chart: Chart) => void;
   onFullscreen?: (chart: Chart) => void;
   onDownload?: (chart: Chart) => void;
+  disableActions?: boolean;
 }
 
-export default function ChartGridItem({ chart, onDelete, onDownload, onEdit, onFullscreen }: Props) {
+export default function ChartGridItem({
+  chart,
+  disableActions = false,
+  onDelete,
+  onDownload,
+  onEdit,
+  onFullscreen,
+}: Props) {
   const {
     config: { title },
     series,
@@ -74,21 +82,21 @@ export default function ChartGridItem({ chart, onDelete, onDownload, onEdit, onF
       <CardActions sx={{ justifyContent: 'flex-end', px: 2, py: 1 }}>
         {onDownload && (
           <Tooltip title='Download Data'>
-            <IconButton onClick={() => onDownload(chart)} size='small'>
+            <IconButton disabled={disableActions} onClick={() => onDownload(chart)} size='small'>
               <DownloadIcon fontSize='small' />
             </IconButton>
           </Tooltip>
         )}
         {onFullscreen && (
           <Tooltip title='View Fullscreen'>
-            <IconButton onClick={() => onFullscreen(chart)} size='small'>
+            <IconButton disabled={disableActions} onClick={() => onFullscreen(chart)} size='small'>
               <FullscreenIcon fontSize='small' />
             </IconButton>
           </Tooltip>
         )}
         {onEdit && (
           <Tooltip title='Edit'>
-            <IconButton onClick={() => onEdit(chart)} size='small'>
+            <IconButton disabled={disableActions} onClick={() => onEdit(chart)} size='small'>
               <EditIcon fontSize='small' />
             </IconButton>
           </Tooltip>
@@ -100,7 +108,7 @@ export default function ChartGridItem({ chart, onDelete, onDownload, onEdit, onF
             title='Delete Chart'
           >
             <Tooltip title='Delete'>
-              <IconButton size='small'>
+              <IconButton disabled={disableActions} size='small'>
                 <DeleteIcon fontSize='small' />
               </IconButton>
             </Tooltip>
