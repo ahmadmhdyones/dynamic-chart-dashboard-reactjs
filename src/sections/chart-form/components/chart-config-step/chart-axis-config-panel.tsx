@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Switch from '@mui/material/Switch';
 import Select from '@mui/material/Select';
+import Slider from '@mui/material/Slider';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -104,6 +105,48 @@ function ChartAxisConfigPanel({ chartType }: Props) {
               label='Show Legend'
             />
           </Box>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography gutterBottom variant='subtitle2'>
+            Advanced Options
+          </Typography>
+        </Grid>
+
+        <Grid item md={6} xs={12}>
+          <Box>
+            <Typography gutterBottom id='animation-duration-slider' variant='body2'>
+              Animation Duration: {config.animationDuration || 1000}ms
+            </Typography>
+            <Slider
+              aria-labelledby='animation-duration-slider'
+              max={2000}
+              min={0}
+              onChange={(_, value) => handleConfigChange('animationDuration', value as number)}
+              step={100}
+              value={config.animationDuration || 1000}
+              valueLabelDisplay='auto'
+            />
+          </Box>
+        </Grid>
+
+        <Grid item md={6} xs={12}>
+          <FormControl fullWidth>
+            <InputLabel id='animation-easing-label'>Animation Easing</InputLabel>
+            <Select
+              id='animation-easing'
+              label='Animation Easing'
+              labelId='animation-easing-label'
+              onChange={e => handleConfigChange('animationEasing', e.target.value)}
+              value={config.animationEasing || 'ease-in-out'}
+            >
+              <MenuItem value='linear'>Linear</MenuItem>
+              <MenuItem value='ease'>Ease</MenuItem>
+              <MenuItem value='ease-in'>Ease In</MenuItem>
+              <MenuItem value='ease-out'>Ease Out</MenuItem>
+              <MenuItem value='ease-in-out'>Ease In Out</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
       </Grid>
     </Paper>

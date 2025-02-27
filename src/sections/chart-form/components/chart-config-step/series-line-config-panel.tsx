@@ -2,8 +2,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Slider from '@mui/material/Slider';
+import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import type { LineSeriesConfig } from '@/types/series-config.types';
@@ -65,6 +67,21 @@ function SeriesLineConfigPanel({ onUpdateSeries, series }: Props) {
             step={1}
             value={series.lineWidth}
             valueLabelDisplay='auto'
+          />
+        </Box>
+
+        <Box>
+          <Typography gutterBottom variant='body2'>
+            Dot Style
+          </Typography>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={series.showDots !== false}
+                onChange={e => onUpdateSeries(series.id, { showDots: e.target.checked })}
+              />
+            }
+            label='Show Data Points'
           />
         </Box>
       </Stack>

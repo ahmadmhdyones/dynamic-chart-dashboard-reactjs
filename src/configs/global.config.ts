@@ -8,7 +8,6 @@
 export { FRED_API_URL, FRED_BASE_URL } from './vite.config'; // Re-export the constants from vite.config.ts
 export const FRED_API_KEY = import.meta.env.VITE_FRED_KEY;
 
-export const API_MOCK_ENABLED = true;
 export const API_MOCK_DELAY = 1000; // 1 second
 
 // ----------------------------------------------------------------------

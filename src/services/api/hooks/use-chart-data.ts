@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import type { SeriesConfig } from '@/types/series-config.types';
 import type { Chart, ChartDataPoint } from '@/types/chart.types';
 
+import { queryKeys } from '@/helpers/react-query';
 import fredService from '@/services/api/fred.service';
-import { queryKeys } from '@/helpers/react-query/query-keys.enum';
 
 // ----------------------------------------------------------------------
 

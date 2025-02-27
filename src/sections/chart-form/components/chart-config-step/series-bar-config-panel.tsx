@@ -3,6 +3,8 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import type { BarSeriesConfig } from '@/types/series-config.types';
 
@@ -57,6 +59,39 @@ function SeriesBarConfigPanel({ onUpdateSeries, series }: Props) {
             value={series.barRadius}
             valueLabelDisplay='auto'
           />
+        </Box>
+
+        <Box>
+          <Typography gutterBottom id='opacity-slider' variant='body2'>
+            Opacity: {series.opacity * 100}%
+          </Typography>
+          <Slider
+            aria-labelledby='opacity-slider'
+            max={1}
+            min={0.1}
+            onChange={(_, value) => onUpdateSeries(series.id, { opacity: value as number })}
+            step={0.1}
+            value={series.opacity}
+            valueLabelDisplay='auto'
+            valueLabelFormat={value => `${Math.round(value * 100)}%`}
+          />
+        </Box>
+
+        <Box>
+          <Typography gutterBottom variant='body2'>
+            Bar Style
+          </Typography>
+          <ToggleButtonGroup
+            aria-label='bar style'
+            exclusive
+            fullWidth
+            onChange={(_, value) => value && onUpdateSeries(series.id, { barStyle: value })}
+            size='small'
+            value={series.barStyle || 'default'}
+          >
+            <ToggleButton value='default'>Default</ToggleButton>
+            <ToggleButton value='stacked'>Stacked</ToggleButton>
+          </ToggleButtonGroup>
         </Box>
       </Stack>
     </Paper>

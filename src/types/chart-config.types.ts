@@ -13,6 +13,8 @@ export interface AxisChartConfig extends BaseChartConfig {
   gridLines: boolean;
   showTooltip: boolean;
   showLegend: boolean;
+  animationDuration?: number;
+  animationEasing?: 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
 }
 
 export interface PieChartConfig extends BaseChartConfig {
