@@ -9,7 +9,7 @@ import StepLabel from '@mui/material/StepLabel';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { useScrollToTop } from '@/hooks/use-scroll-to-top';
-import ChartPreviewCard from '@/components/charts/chart-preview-card';
+import { ChartPreviewCard } from '@/components/charts/chart-preview';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 import { CHART_TYPE_STEP_TITLE } from './chart-type-step/step';

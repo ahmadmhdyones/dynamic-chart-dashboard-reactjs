@@ -22,7 +22,7 @@ export default function SectionDashboardOverview() {
   );
 
   return (
-    <Box component='section'>
+    <Box component='section' sx={{ mb: 3 }}>
       <Grid container spacing={3}>
         {/* Stats Cards */}
         <Grid item xs={12}>

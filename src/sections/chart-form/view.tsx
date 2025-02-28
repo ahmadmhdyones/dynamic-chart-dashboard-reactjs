@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 import type { Chart } from '@/types/chart.types';
@@ -24,14 +25,16 @@ export default function SectionChartForm({
   mode = 'create',
 }: SectionChartFormProps) {
   return (
-    <ChartFormProvider initialFormData={initialChartData} mode={mode}>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Suspense fallback={<PageLoader />}>
-            <ChartFormStepper />
-          </Suspense>
+    <Box component='section' sx={{ mb: 3 }}>
+      <ChartFormProvider initialFormData={initialChartData} mode={mode}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Suspense fallback={<PageLoader />}>
+              <ChartFormStepper />
+            </Suspense>
+          </Grid>
         </Grid>
-      </Grid>
-    </ChartFormProvider>
+      </ChartFormProvider>
+    </Box>
   );
 }

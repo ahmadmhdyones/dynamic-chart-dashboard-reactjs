@@ -10,7 +10,8 @@ import { FredFrequencyShort } from '@/types/fred-freq.enum';
 
 // ----------------------------------------------------------------------
 
-export const CHART_MAX_DATA_SERIES = 5;
+export const CHARTS_MAX_DATA_SERIES = 4;
+export const CHARTS_MAX_RECENT_CHART_COUNT = 2;
 
 export const configChartDefault = {
   timeFrequency: FredFrequencyShort.Annual,
