@@ -11,7 +11,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 import { getRandomColor } from '@/helpers/color.utils';
 import type { IFredSeries } from '@/services/api/fred.types';
-import { CHART_MAX_DATA_SERIES } from '@/configs/charts.config';
+import { CHARTS_MAX_DATA_SERIES } from '@/configs/charts.config';
 import { useFredSearch } from '@/services/api/hooks/use-fred-search';
 import ScrollableContainer from '@/components/common/scrollable-container';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
@@ -72,14 +72,14 @@ function DataSourceStep() {
       handleRemoveSeries(series.id);
     } else {
       // If not selected and we haven't reached the max, add it
-      if (selectedSeriesInfos.length < CHART_MAX_DATA_SERIES) {
+      if (selectedSeriesInfos.length < CHARTS_MAX_DATA_SERIES) {
         handleAddSeries(series);
       }
     }
   };
 
   // Check if we've reached the maximum number of data series allowed
-  const hasReachedMaxSeries = selectedSeriesInfos.length >= CHART_MAX_DATA_SERIES;
+  const hasReachedMaxSeries = selectedSeriesInfos.length >= CHARTS_MAX_DATA_SERIES;
 
   return (
     <Box sx={{ py: 2 }}>
@@ -89,7 +89,7 @@ function DataSourceStep() {
       <Typography color='text.secondary' sx={{ mb: 3 }} variant='body2'>
         Search and select data series from the Federal Reserve Economic Data (FRED). You can add up to{' '}
         <Typography component='span' sx={{ fontWeight: 'bold' }}>
-          {CHART_MAX_DATA_SERIES}
+          {CHARTS_MAX_DATA_SERIES}
         </Typography>{' '}
         data series.
       </Typography>

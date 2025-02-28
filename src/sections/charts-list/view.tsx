@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
+import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 
@@ -12,6 +11,7 @@ import type { Chart } from '@/types/chart.types';
 
 import { paths } from '@/helpers/map-routes';
 import { useCharts } from '@/services/api/hooks/use-charts';
+import CreateChartButton from '@/components/charts/CreateChartButton';
 import { useDeleteChart } from '@/services/api/hooks/use-delete-chart';
 
 import ChartsGrid from './components/charts-grid';
@@ -54,7 +54,7 @@ export default function SectionChartsList() {
   };
 
   return (
-    <>
+    <Box component='section'>
       <Stack alignItems='center' direction='row' justifyContent='space-between' mb={5}>
         {isLoading ? (
           <Skeleton height={40} variant='text' width={100} />
@@ -62,15 +62,7 @@ export default function SectionChartsList() {
           <Typography variant='h4'>Total Charts: {charts.length}</Typography>
         )}
 
-        <Button
-          color='primary'
-          component={Link}
-          startIcon={<AddIcon />}
-          to={paths.dashboard.charts.new.to()}
-          variant='contained'
-        >
-          Create New Chart
-        </Button>
+        <CreateChartButton />
       </Stack>
 
       <ChartsGrid
@@ -87,6 +79,6 @@ export default function SectionChartsList() {
       {fullscreenChart && (
         <ChartFullscreenDialog chart={fullscreenChart} onClose={handleCloseFullscreen} open={!!fullscreenChart} />
       )}
-    </>
+    </Box>
   );
 }
