@@ -77,11 +77,15 @@ export function createDefaultSeriesConfig<T extends ChartType>(
   }
 }
 
-export function createDefaultChartConfig<T extends ChartType>(chartType: T): ChartConfig<T> {
+export function createDefaultChartConfig<T extends ChartType>(
+  chartType: T = configChartDefault.type as T
+): ChartConfig<T> {
   switch (chartType) {
     case ChartType.LINE:
     case ChartType.BAR:
       return {
+        animationDuration: configChartDefault.animationDuration,
+        animationEasing: configChartDefault.animationEasing,
         gridLines: true,
         legendPosition: 'right',
         showLegend: true,
@@ -93,6 +97,8 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
 
     case ChartType.PIE:
       return {
+        animationDuration: configChartDefault.animationDuration,
+        animationEasing: configChartDefault.animationEasing,
         donut: false,
         legendPosition: 'right',
         showLabels: true,
@@ -102,6 +108,8 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
 
     case ChartType.SCATTER:
       return {
+        animationDuration: configChartDefault.animationDuration,
+        animationEasing: configChartDefault.animationEasing,
         gridLines: true,
         legendPosition: 'right',
         regressionLineColor: getRandomColor(),
@@ -115,6 +123,8 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
 
     case ChartType.TREEMAP:
       return {
+        animationDuration: configChartDefault.animationDuration,
+        animationEasing: configChartDefault.animationEasing,
         legendPosition: 'bottom',
         showLabels: true,
         title: 'New Chart',
@@ -126,7 +136,7 @@ export function createDefaultChartConfig<T extends ChartType>(chartType: T): Cha
 }
 
 export function createChart<T extends ChartType>(
-  chartType: T,
+  chartType: T = configChartDefault.type as T,
   id: string = uuidv4(),
   timeFrequency: FredFrequencyShort = configChartDefault.timeFrequency
 ): Chart<T> {

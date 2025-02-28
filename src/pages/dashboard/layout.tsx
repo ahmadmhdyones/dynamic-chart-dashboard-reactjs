@@ -1,6 +1,6 @@
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 
-import { configDashboard } from '@/configs/global.config';
+import { configDashboard } from '@/configs/dashboard.config';
 
 // ----------------------------------------------------------------------
 

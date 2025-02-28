@@ -5,6 +5,8 @@ import type { ChartType } from '@/types/chart-type.enum';
 export interface BaseChartConfig {
   title: string;
   legendPosition: 'top' | 'right' | 'bottom' | 'left' | 'none';
+  animationDuration: number;
+  animationEasing: 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
 }
 
 export interface AxisChartConfig extends BaseChartConfig {
@@ -13,8 +15,6 @@ export interface AxisChartConfig extends BaseChartConfig {
   gridLines: boolean;
   showTooltip: boolean;
   showLegend: boolean;
-  animationDuration?: number;
-  animationEasing?: 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out';
 }
 
 export interface PieChartConfig extends BaseChartConfig {

@@ -69,8 +69,8 @@ class ChartFactory {
             return (
               <Line
                 activeDot={{ r: 8 }}
-                animationDuration={config.animationDuration || 1000}
-                animationEasing={config.animationEasing || 'ease-in-out'}
+                animationDuration={config.animationDuration}
+                animationEasing={config.animationEasing}
                 dataKey={s.id}
                 dot={lineSeries.showDots !== false ? { r: 4 } : false}
                 isAnimationActive={true}
@@ -125,8 +125,8 @@ class ChartFactory {
             const barSeries = s as BarSeriesConfig;
             return (
               <Bar
-                animationDuration={config.animationDuration || 1000}
-                animationEasing={config.animationEasing || 'ease-in-out'}
+                animationDuration={config.animationDuration}
+                animationEasing={config.animationEasing}
                 barSize={barSeries.barWidth}
                 dataKey={s.id}
                 fill={s.color}

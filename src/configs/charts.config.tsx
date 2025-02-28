@@ -14,6 +14,8 @@ export const CHARTS_MAX_DATA_SERIES = 4;
 export const CHARTS_MAX_RECENT_CHART_COUNT = 2;
 
 export const configChartDefault = {
+  animationDuration: 750,
+  animationEasing: 'ease-in-out',
   timeFrequency: FredFrequencyShort.Annual,
   type: ChartType.LINE,
 } as const;

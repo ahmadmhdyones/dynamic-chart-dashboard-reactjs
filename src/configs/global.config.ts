@@ -12,10 +12,6 @@ export const API_MOCK_DELAY = 1000; // 1 second
 
 // ----------------------------------------------------------------------
 
-export const configDashboard = {
-  initialSidebarCollapsed: true,
-} as const;
-
 export const configQuery = {
   retryCount: 0,
   staleTime: 1000 * 60, // 1 minute
