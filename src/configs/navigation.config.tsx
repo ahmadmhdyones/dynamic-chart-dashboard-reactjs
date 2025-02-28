@@ -12,7 +12,7 @@ export const NAVIGATION: Navigation = [
     icon: <HomeIcon />,
     kind: 'page',
     segment: paths.dashboard.root.to().slice(1),
-    title: 'Dashboard',
+    title: 'Overview',
   },
   // {
   //   icon: <BarChartIcon />,

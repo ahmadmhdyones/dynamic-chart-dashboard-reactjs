@@ -5,7 +5,7 @@ import ShowChartIcon from '@mui/icons-material/ShowChart';
 import { paths } from '@/helpers/map-routes';
 import { QueryParams } from '@/helpers/map-params/query-params.enum';
 
-import StatsCard from './StatsCard';
+import StatsCard from './stats-card';
 
 // ----------------------------------------------------------------------
 
