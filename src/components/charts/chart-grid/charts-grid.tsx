@@ -40,7 +40,7 @@ export default function ChartsGrid({
     return (
       <Grid container spacing={3}>
         {[...Array(4)].map((_, index) => (
-          <Grid item key={index} sm={6} xs={12}>
+          <Grid item key={index} lg={4} md={6} xs={12}>
             <ChartGridItemSkeleton />
           </Grid>
         ))}
@@ -60,7 +60,7 @@ export default function ChartsGrid({
     <>
       <Grid container spacing={3}>
         {charts.map(chart => (
-          <Grid item key={chart.id} sm={6} xs={12}>
+          <Grid item key={chart.id} lg={4} md={6} xs={12}>
             <ChartGridItem
               chart={chart}
               disableActions={isDeleting}

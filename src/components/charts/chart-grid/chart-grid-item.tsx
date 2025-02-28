@@ -4,11 +4,13 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
+import { useTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import DeleteIcon from '@mui/icons-material/Delete';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import DownloadIcon from '@mui/icons-material/FileDownload';
 
@@ -43,18 +45,25 @@ export default function ChartGridItem({
     timeFrequency,
   } = chart;
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+
+  // Responsive height calculation
+  const chartHeight = isMobile ? 250 : isTablet ? 350 : 400;
+
   return (
     <Card sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-      <CardContent sx={{ flex: '1 0 auto', p: 2 }}>
+      <CardContent sx={{ display: 'flex', flex: '1 0 auto', flexDirection: 'column', p: { sm: 2, xs: 1.5 } }}>
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-          <Typography noWrap title={title} variant='h6'>
+          <Typography noWrap sx={{ maxWidth: '70%' }} title={title} variant='h6'>
             {title || 'Untitled Chart'}
           </Typography>
           <Chip color='primary' label={`${getFrequencyLabel(timeFrequency)}`} size='small' variant='outlined' />
         </Box>
 
-        <Box sx={{ height: 400, mb: 1 }}>
-          <ChartPreview chart={chart} height={500} showPlaceholders={false} />
+        <Box sx={{ flex: 1, height: chartHeight, mb: 1, minHeight: isMobile ? 200 : 300 }}>
+          <ChartPreview chart={chart} height='100%' showPlaceholders={false} />
         </Box>
 
         <Stack alignItems='center' direction='row' spacing={0.5} sx={{ mt: 1 }}>

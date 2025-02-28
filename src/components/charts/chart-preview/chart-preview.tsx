@@ -18,7 +18,7 @@ export interface ChartPreviewProps {
   showPlaceholders?: boolean;
 }
 
-function ChartPreview({ chart, height = 300, showPlaceholders = true, width = '100%' }: ChartPreviewProps) {
+function ChartPreview({ chart, height = '100%', showPlaceholders = true, width = '100%' }: ChartPreviewProps) {
   const { series } = chart;
   const { data: chartData = [], error, isError, isLoading } = useChartData({ chart });
 
