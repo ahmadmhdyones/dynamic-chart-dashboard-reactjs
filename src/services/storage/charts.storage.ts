@@ -13,7 +13,9 @@ class ChartStorage {
 
   // Helper to simulate API delay
   private delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise<void>(resolve => {
+      setTimeout(resolve, ms);
+    });
   }
 
   // Get all charts from storage

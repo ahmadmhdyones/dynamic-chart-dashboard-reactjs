@@ -13,7 +13,7 @@ const initialState: StateType = {
 // ----------------------------------------------------------------------
 
 export const sliceApp = createSlice({
-  extraReducers: builder => {
+  extraReducers: _builder => {
     //
   },
   initialState,
