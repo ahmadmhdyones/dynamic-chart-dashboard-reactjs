@@ -43,6 +43,7 @@ function ChartPreview({ chart, height = '100%', showPlaceholders = true, width =
         sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column', height, justifyContent: 'center', width }}
       >
         <CircularProgress sx={{ mb: 2 }} />
+
         {showPlaceholders && (
           <>
             <Typography color='text.secondary' variant='body2'>
@@ -57,7 +58,7 @@ function ChartPreview({ chart, height = '100%', showPlaceholders = true, width =
     );
   }
 
-  if (isError && showPlaceholders) {
+  if (isError) {
     return (
       <Box sx={{ height, p: 2, width }}>
         <Alert severity='error'>
@@ -78,68 +79,6 @@ function ChartPreview({ chart, height = '100%', showPlaceholders = true, width =
         <Typography color='text.secondary' variant='body1'>
           No data available for the selected series
         </Typography>
-      </Box>
-    );
-  }
-
-  // Check if we have data for all selected series
-  const missingSeriesData = series.filter(s => !chartData.some(dataPoint => dataPoint[s.id] !== undefined));
-
-  if (missingSeriesData.length > 0 && showPlaceholders) {
-    return (
-      <Box sx={{ height, p: 2, width }}>
-        <Alert severity='warning'>
-          <AlertTitle>Incomplete Data</AlertTitle>
-          <Typography variant='body2'>No data available for the following series:</Typography>
-          <ul style={{ margin: '8px 0', paddingLeft: '20px' }}>
-            {missingSeriesData.map(s => (
-              <li key={s.id}>{s.label || s.id}</li>
-            ))}
-          </ul>
-          <Typography variant='body2'>
-            This may be due to frequency conversion limitations or data availability.
-          </Typography>
-          <Typography sx={{ mt: 1 }} variant='body2'>
-            Try selecting a different frequency or check if the series has data for the selected time period.
-          </Typography>
-        </Alert>
-        {chartData.length > 0 && (
-          <Box sx={{ mt: 2 }}>
-            {ChartFactory.createChart(
-              {
-                ...chart,
-                series: series.filter(s => !missingSeriesData.includes(s)),
-              },
-              { chartData, height, width }
-            )}
-          </Box>
-        )}
-      </Box>
-    );
-  }
-
-  // Check for series with very few data points
-  const seriesWithLimitedData = series.filter(s => {
-    const dataPointsForSeries = chartData.filter(dataPoint => dataPoint[s.id] !== undefined);
-    return dataPointsForSeries.length < 5; // Arbitrary threshold for "limited data"
-  });
-
-  if (seriesWithLimitedData.length > 0 && showPlaceholders) {
-    return (
-      <Box sx={{ height, p: 2, width }}>
-        <Alert severity='info' sx={{ mb: 2 }}>
-          <AlertTitle>Limited Data Available</AlertTitle>
-          <Typography variant='body2'>The following series have very few data points available:</Typography>
-          <ul style={{ margin: '8px 0', paddingLeft: '20px' }}>
-            {seriesWithLimitedData.map(s => (
-              <li key={s.id}>{s.label || s.id}</li>
-            ))}
-          </ul>
-          <Typography variant='body2'>
-            This may affect the visual quality of your chart. Consider selecting a different frequency or time period.
-          </Typography>
-        </Alert>
-        {ChartFactory.createChart(chart, { chartData, height, width })}
       </Box>
     );
   }
