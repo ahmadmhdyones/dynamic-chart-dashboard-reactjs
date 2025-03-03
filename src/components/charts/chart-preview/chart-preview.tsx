@@ -7,6 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import type { Chart } from '@/types/chart.types';
 
 import { ChartFactory } from '@/helpers/chart-factory';
+import EmptyContent from '@/components/common/empty-content';
 import { useChartData } from '@/services/api/hooks/use-chart-data';
 
 // ----------------------------------------------------------------------
@@ -22,28 +23,36 @@ function ChartPreview({ chart, height = '100%', showPlaceholders = true, width =
   const { series } = chart;
   const { data: chartData = [], error, isError, isLoading } = useChartData({ chart });
 
-  if (series.length === 0 && showPlaceholders) {
-    return (
-      <Box sx={{ alignItems: 'center', display: 'flex', height, justifyContent: 'center', width }}>
-        <Typography color='text.secondary' variant='body1'>
-          Select a data source to preview the chart
-        </Typography>
-      </Box>
-    );
+  if (series.length === 0) {
+    if (showPlaceholders) {
+      return (
+        <Box sx={{ alignItems: 'center', display: 'flex', height, justifyContent: 'center', width }}>
+          <Typography color='text.secondary' variant='body1'>
+            Select a data source to preview the chart
+          </Typography>
+        </Box>
+      );
+    }
+
+    return <EmptyContent title='No data available' />;
   }
 
-  if (isLoading && showPlaceholders) {
+  if (isLoading) {
     return (
       <Box
         sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column', height, justifyContent: 'center', width }}
       >
         <CircularProgress sx={{ mb: 2 }} />
-        <Typography color='text.secondary' variant='body2'>
-          Fetching data from FRED...
-        </Typography>
-        <Typography color='text.secondary' sx={{ maxWidth: '80%', mt: 1, textAlign: 'center' }} variant='caption'>
-          This may take a moment, especially for high-frequency data (daily/weekly) or multiple series
-        </Typography>
+        {showPlaceholders && (
+          <>
+            <Typography color='text.secondary' variant='body2'>
+              Fetching data from FRED...
+            </Typography>
+            <Typography color='text.secondary' sx={{ maxWidth: '80%', mt: 1, textAlign: 'center' }} variant='caption'>
+              This may take a moment, especially for high-frequency data (daily/weekly) or multiple series
+            </Typography>
+          </>
+        )}
       </Box>
     );
   }
@@ -51,20 +60,7 @@ function ChartPreview({ chart, height = '100%', showPlaceholders = true, width =
   if (isError && showPlaceholders) {
     return (
       <Box sx={{ height, p: 2, width }}>
-        <Alert
-          action={
-            chartData.length > 0 ? (
-              <Typography color='text.secondary' sx={{ display: 'block', mt: 1 }} variant='caption'>
-                Showing partial data
-              </Typography>
-            ) : (
-              <Typography color='text.secondary' sx={{ display: 'block', mt: 1 }} variant='caption'>
-                Using mock data as fallback
-              </Typography>
-            )
-          }
-          severity='error'
-        >
+        <Alert severity='error'>
           <AlertTitle>Error loading data</AlertTitle>
           {error instanceof Error ? error.message : 'Failed to fetch data from FRED API'}
         </Alert>
