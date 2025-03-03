@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AxiosInstance } from 'axios';
 
 import { handleApiError } from '@/helpers/error.utils';
-import { FRED_API_KEY, FRED_BASE_URL } from '@/configs/global.config';
+import { FRED_API_KEY, FRED_API_URL, FRED_BASE_URL } from '@/configs/global.config';
 
 import { FRED_API_ENDPOINTS } from './endpoints';
 import type {
@@ -15,7 +15,7 @@ import type {
 // ----------------------------------------------------------------------
 
 const fredApi = axios.create({
-  baseURL: FRED_BASE_URL,
+  baseURL: import.meta.env.PROD ? FRED_API_URL : FRED_BASE_URL,
   params: {
     api_key: FRED_API_KEY,
     file_type: 'json',
