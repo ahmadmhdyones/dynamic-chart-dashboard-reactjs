@@ -13,7 +13,7 @@ import { getRandomColor } from '@/helpers/color.utils';
 import type { IFredSeries } from '@/services/api/fred.types';
 import { CHARTS_MAX_DATA_SERIES } from '@/configs/charts.config';
 import { useFredSearch } from '@/services/api/hooks/use-fred-search';
-import ScrollableContainer from '@/components/common/scrollable-container';
+import ScrollableContainer from '@/components/ui/scrollable-container';
 import { ChartFormContext } from '@/sections/chart-form/contexts/chart-form-context';
 
 import SearchResults from './search-results';
