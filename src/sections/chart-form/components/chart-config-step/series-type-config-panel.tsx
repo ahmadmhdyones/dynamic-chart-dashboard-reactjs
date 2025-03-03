@@ -70,9 +70,9 @@ function SeriesTypeConfigPanel({ chartType, onUpdateSeries, series }: Props) {
                       width: 12,
                     }}
                   />
-                  <Tooltip title={s.data?.title || s.label || s.id}>
+                  <Tooltip title={s.data?.title || s.label}>
                     <Typography noWrap sx={{ maxWidth: 120 }} variant='body2'>
-                      {s.data?.title || s.label || s.id}
+                      {s.data?.title || s.label}
                     </Typography>
                   </Tooltip>
                 </Box>

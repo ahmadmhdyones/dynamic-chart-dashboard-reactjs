@@ -65,7 +65,7 @@ function ChartAxisConfigPanel({ chartType }: Props) {
               label='Legend Position'
               labelId='legend-position-label'
               onChange={e => handleConfigChange('legendPosition', e.target.value)}
-              value={config.legendPosition || 'none'}
+              value={config.legendPosition}
             >
               {legendPositionOptions.map(option => (
                 <MenuItem key={option.value} value={option.value}>

@@ -53,7 +53,7 @@ function PageChartsEdit() {
       ]}
       title={`Edit Chart: ${chart?.config.title || 'Loading...'}`}
     >
-      <MetaTags title={`Edit Chart: ${chart?.config.title || 'Loading...'} | DCDR`} />
+      <MetaTags title={`Edit Chart | DCDR`} />
 
       <Box component='main' id={paths.dashboard.charts.id.edit.id}>
         {renderContent()}

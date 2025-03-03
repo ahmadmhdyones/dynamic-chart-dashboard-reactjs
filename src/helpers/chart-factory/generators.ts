@@ -86,10 +86,10 @@ export function createDefaultChartConfig<T extends ChartType>(
       return {
         animationDuration: configChartDefault.animationDuration,
         animationEasing: configChartDefault.animationEasing,
-        gridLines: true,
-        legendPosition: 'right',
-        showLegend: true,
-        showTooltip: true,
+        gridLines: configChartDefault.showGridLines,
+        legendPosition: configChartDefault.legendPosition,
+        showLegend: configChartDefault.showLegend,
+        showTooltip: configChartDefault.showTooltip,
         title: 'New Chart',
         xAxisTitle: 'Date',
         yAxisTitle: 'Value',
@@ -100,9 +100,9 @@ export function createDefaultChartConfig<T extends ChartType>(
         animationDuration: configChartDefault.animationDuration,
         animationEasing: configChartDefault.animationEasing,
         donut: false,
-        legendPosition: 'right',
-        showLabels: true,
-        showLegend: true,
+        legendPosition: configChartDefault.legendPosition,
+        showLabels: configChartDefault.showLabels,
+        showLegend: configChartDefault.showLegend,
         title: 'New Chart',
       } as ChartConfig<T>;
 
@@ -110,12 +110,12 @@ export function createDefaultChartConfig<T extends ChartType>(
       return {
         animationDuration: configChartDefault.animationDuration,
         animationEasing: configChartDefault.animationEasing,
-        gridLines: true,
-        legendPosition: 'right',
+        gridLines: configChartDefault.showGridLines,
+        legendPosition: configChartDefault.legendPosition,
         regressionLineColor: getRandomColor(),
-        showLegend: true,
-        showRegressionLine: false,
-        showTooltip: true,
+        showLegend: configChartDefault.showLegend,
+        showRegressionLine: configChartDefault.showRegressionLine,
+        showTooltip: configChartDefault.showTooltip,
         title: 'New Chart',
         xAxisTitle: 'Date',
         yAxisTitle: 'Value',
@@ -125,8 +125,8 @@ export function createDefaultChartConfig<T extends ChartType>(
       return {
         animationDuration: configChartDefault.animationDuration,
         animationEasing: configChartDefault.animationEasing,
-        legendPosition: 'bottom',
-        showLabels: true,
+        legendPosition: configChartDefault.legendPosition,
+        showLabels: configChartDefault.showLabels,
         title: 'New Chart',
       } as ChartConfig<T>;
 

@@ -57,7 +57,7 @@ export default function ChartGridItem({
       <CardContent sx={{ display: 'flex', flex: '1 0 auto', flexDirection: 'column', p: { sm: 2, xs: 1.5 } }}>
         <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mb: 1 }}>
           <Typography noWrap sx={{ maxWidth: '70%' }} title={title} variant='h6'>
-            {title || 'Untitled Chart'}
+            {title}
           </Typography>
           <Chip color='primary' label={`${getFrequencyLabel(timeFrequency)}`} size='small' variant='outlined' />
         </Box>
@@ -73,7 +73,7 @@ export default function ChartGridItem({
             </Typography>
           </Stack>
           {series.map(s => (
-            <Tooltip key={s.id} title={s.label || s.id}>
+            <Tooltip key={s.id} title={s.label}>
               <Box
                 sx={{
                   bgcolor: s.color,

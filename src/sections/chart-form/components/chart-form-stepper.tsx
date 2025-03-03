@@ -66,7 +66,7 @@ function ChartFormStepper() {
   const submitButtonText = isSaving ? 'Saving...' : mode === 'create' ? 'Create Chart' : 'Update Chart';
 
   return (
-    <Box>
+    <Box id='chart-form-stepper'>
       {/* Chart Form Stepper */}
       <Paper sx={{ mb: 3, p: 3 }}>
         <Stepper activeStep={activeStep} alternativeLabel>

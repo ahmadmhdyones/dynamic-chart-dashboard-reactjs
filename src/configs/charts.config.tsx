@@ -10,12 +10,18 @@ import { FredFrequencyShort } from '@/types/fred-freq.enum';
 
 // ----------------------------------------------------------------------
 
-export const CHARTS_MAX_DATA_SERIES = 4;
+export const CHARTS_MAX_DATA_SERIES = 2;
 export const CHARTS_MAX_RECENT_CHART_COUNT = 2;
 
 export const configChartDefault = {
   animationDuration: 750,
   animationEasing: 'ease-in-out',
+  legendPosition: 'none',
+  showGridLines: true,
+  showLabels: true,
+  showLegend: true,
+  showRegressionLine: false,
+  showTooltip: true,
   timeFrequency: FredFrequencyShort.Annual,
   type: ChartType.LINE,
 } as const;
