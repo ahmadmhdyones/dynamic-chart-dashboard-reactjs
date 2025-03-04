@@ -16,7 +16,7 @@ export const configQuery = {
   refetchOnWindowFocus: false,
   retryCount: 0,
   staleTime: 1000 * 60, // 1 minute
-  throwOnError: true,
+  throwOnError: false,
 } as const;
 
 export const configToast = {

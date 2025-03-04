@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import type { Chart } from '@/types/chart.types';
@@ -16,6 +17,10 @@ export const useSaveChart = () => {
       return chartStorage.create(chart);
     },
     mutationKey: [queryKeys.saveChart()],
+    onError: (error, _chart) => {
+      console.error('Failed to save chart:', error);
+      toast.error('Failed to save chart');
+    },
     onSuccess: () => {
       // Invalidate the charts list query to refetch
       queryClient.invalidateQueries({ queryKey: [queryKeys.charts()] });

@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { chartStorage } from '@/services/storage';
@@ -11,6 +12,10 @@ export const useDeleteChart = () => {
   return useMutation({
     mutationFn: async (id: string) => {
       return chartStorage.delete(id);
+    },
+    onError: (error, _id) => {
+      console.error('Failed to delete chart:', error);
+      toast.error('Failed to delete chart');
     },
     onSuccess: (_, id) => {
       // Remove the chart from the cache

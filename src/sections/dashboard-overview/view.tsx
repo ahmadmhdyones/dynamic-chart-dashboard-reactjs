@@ -4,13 +4,14 @@ import Grid from '@mui/material/Grid';
 import type { ChartType } from '@/types/chart-type.enum';
 
 import { useCharts } from '@/services/api/hooks/use-charts';
+import ErrorContent from '@/components/common/error-content';
 
 import ChartTypeStats from './components/chart-type-stats';
 
 // ----------------------------------------------------------------------
 
 export default function SectionDashboardOverview() {
-  const { data: charts = [], isLoading } = useCharts();
+  const { data: charts = [], error, isLoading } = useCharts();
 
   // Count charts by type
   const chartTypeCount = charts.reduce(
@@ -20,6 +21,10 @@ export default function SectionDashboardOverview() {
     },
     {} as Record<ChartType, number>
   );
+
+  if (error) {
+    return <ErrorContent message={error.message} title='Error loading charts' />;
+  }
 
   return (
     <Box component='section' sx={{ mb: 3 }}>

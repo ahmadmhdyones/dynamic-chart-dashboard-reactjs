@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import type { Chart } from '@/types/chart.types';
@@ -18,6 +19,10 @@ export const useUpdateChart = () => {
   return useMutation({
     mutationFn: async ({ data, id }: UpdateChartParams) => {
       return chartStorage.update(id, data);
+    },
+    onError: (error, _data) => {
+      console.error('Failed to update chart:', error);
+      toast.error('Failed to update chart');
     },
     onSuccess: updatedChart => {
       // Update the specific chart in the cache

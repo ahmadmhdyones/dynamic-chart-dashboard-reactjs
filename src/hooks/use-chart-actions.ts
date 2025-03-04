@@ -32,14 +32,7 @@ export default function useChartActions() {
   };
 
   const handleDeleteChart = (chart: Chart) => {
-    deleteChart(chart.id, {
-      onError: () => {
-        toast.error('Failed to delete chart');
-      },
-      onSuccess: () => {
-        toast.success('Chart deleted successfully');
-      },
-    });
+    deleteChart(chart.id);
   };
 
   return {
