@@ -10,7 +10,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import Logo from '@/components/ui/logo';
 import { SITE } from '@/configs/site.config';
-import { getStrShortcut } from '@/helpers/string.utils';
+import { shortenStr } from '@/helpers/string.utils';
 
 // ----------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ export default function AppLoader() {
 
           <Slide direction='up' in timeout={1200}>
             <Typography component='div' variant='h6'>
-              {getStrShortcut(SITE.name)}
+              {shortenStr(SITE.name)}
             </Typography>
           </Slide>
 

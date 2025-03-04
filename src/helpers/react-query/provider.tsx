@@ -10,15 +10,16 @@ const queryClient = new QueryClient({
     mutations: {
       networkMode: 'offlineFirst',
       retry: configQuery.retryCount,
-      throwOnError: false,
+      throwOnError: configQuery.throwOnError,
     },
     queries: {
       networkMode: 'offlineFirst',
       refetchInterval: false,
+      refetchOnWindowFocus: configQuery.refetchOnWindowFocus,
       retry: configQuery.retryCount,
       retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000), // Exponential backoff
       staleTime: configQuery.staleTime,
-      throwOnError: false,
+      throwOnError: configQuery.throwOnError,
     },
   },
 });

@@ -50,10 +50,7 @@ const routesMain = [
         <Outlet />
       </Suspense>
     ),
-    children: [
-      { path: 'not-found', Component: Page404 },
-      { path: '500', Component: Page404 },
-    ],
+    children: [{ path: 'not-found', Component: Page404 }],
   },
 ];
 

@@ -14,7 +14,6 @@ import type { FredFrequencyShort } from '@/types/fred-freq.enum';
  */
 
 export const queryKeys = {
-  // Charts
   chart: (id: Chart['id']) => `chart-${id}`,
   chartData: (seriesLength: number, seriesIds: string, timeFrequency: FredFrequencyShort) =>
     `chart-data-${seriesLength}-${seriesIds}-${timeFrequency}`,

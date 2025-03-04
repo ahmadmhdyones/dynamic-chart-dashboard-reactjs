@@ -15,13 +15,13 @@ export interface BaseSeriesConfig {
 export interface LineSeriesConfig extends BaseSeriesConfig {
   lineType: 'solid' | 'dashed' | 'dotted';
   lineWidth: number;
-  showDots?: boolean;
+  showDots: boolean;
 }
 
 export interface BarSeriesConfig extends BaseSeriesConfig {
   barWidth: number;
   barRadius: number;
-  barStyle?: 'default' | 'stacked';
+  barStyle: 'default' | 'stacked';
 }
 
 export interface PieSeriesConfig extends BaseSeriesConfig {

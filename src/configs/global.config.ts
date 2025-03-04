@@ -13,10 +13,18 @@ export const API_MOCK_DELAY = 1000; // 1 second
 // ----------------------------------------------------------------------
 
 export const configQuery = {
+  refetchOnWindowFocus: false,
   retryCount: 0,
   staleTime: 1000 * 60, // 1 minute
+  throwOnError: true,
 } as const;
 
 export const configToast = {
   duration: 5000, // 5 seconds
+  position: 'top-right',
+  reverseOrder: false,
+} as const;
+
+export const configDashboard = {
+  initialSidebarCollapsed: true,
 } as const;

@@ -29,8 +29,9 @@ export function createDefaultSeriesConfig<T extends ChartType>(
     case ChartType.LINE:
       seriesConfig = {
         ...baseConfig,
-        lineType: 'solid',
-        lineWidth: 2,
+        lineType: configChartDefault.lineType,
+        lineWidth: configChartDefault.lineWidth,
+        showDots: configChartDefault.showDots,
       } as LineSeriesConfig;
 
       return seriesConfig as SeriesConfig<T>;
@@ -38,8 +39,9 @@ export function createDefaultSeriesConfig<T extends ChartType>(
     case ChartType.BAR:
       seriesConfig = {
         ...baseConfig,
-        barRadius: 0,
-        barWidth: 20,
+        barRadius: configChartDefault.barRadius,
+        barStyle: configChartDefault.barStyle,
+        barWidth: configChartDefault.barWidth,
       } as BarSeriesConfig;
 
       return seriesConfig as SeriesConfig<T>;
@@ -47,9 +49,9 @@ export function createDefaultSeriesConfig<T extends ChartType>(
     case ChartType.PIE:
       seriesConfig = {
         ...baseConfig,
-        innerRadius: 0,
-        outerRadius: 100,
-        padAngle: 0.01,
+        innerRadius: configChartDefault.innerRadius,
+        outerRadius: configChartDefault.outerRadius,
+        padAngle: configChartDefault.padAngle,
       } as PieSeriesConfig;
 
       return seriesConfig as SeriesConfig<T>;
@@ -57,8 +59,8 @@ export function createDefaultSeriesConfig<T extends ChartType>(
     case ChartType.SCATTER:
       seriesConfig = {
         ...baseConfig,
-        symbolSize: 6,
-        symbolType: 'circle',
+        symbolSize: configChartDefault.symbolSize,
+        symbolType: configChartDefault.symbolType,
       } as ScatterSeriesConfig;
 
       return seriesConfig as SeriesConfig<T>;
@@ -66,8 +68,8 @@ export function createDefaultSeriesConfig<T extends ChartType>(
     case ChartType.TREEMAP:
       seriesConfig = {
         ...baseConfig,
-        borderWidth: 1,
-        padding: 2,
+        borderWidth: configChartDefault.borderWidth,
+        padding: configChartDefault.padding,
       } as TreemapSeriesConfig;
 
       return seriesConfig as SeriesConfig<T>;
@@ -90,9 +92,9 @@ export function createDefaultChartConfig<T extends ChartType>(
         legendPosition: configChartDefault.legendPosition,
         showLegend: configChartDefault.showLegend,
         showTooltip: configChartDefault.showTooltip,
-        title: 'New Chart',
-        xAxisTitle: 'Date',
-        yAxisTitle: 'Value',
+        title: configChartDefault.title,
+        xAxisTitle: configChartDefault.xAxisTitle,
+        yAxisTitle: configChartDefault.yAxisTitle,
       } as ChartConfig<T>;
 
     case ChartType.PIE:
@@ -103,7 +105,7 @@ export function createDefaultChartConfig<T extends ChartType>(
         legendPosition: configChartDefault.legendPosition,
         showLabels: configChartDefault.showLabels,
         showLegend: configChartDefault.showLegend,
-        title: 'New Chart',
+        title: configChartDefault.title,
       } as ChartConfig<T>;
 
     case ChartType.SCATTER:
@@ -116,9 +118,9 @@ export function createDefaultChartConfig<T extends ChartType>(
         showLegend: configChartDefault.showLegend,
         showRegressionLine: configChartDefault.showRegressionLine,
         showTooltip: configChartDefault.showTooltip,
-        title: 'New Chart',
-        xAxisTitle: 'Date',
-        yAxisTitle: 'Value',
+        title: configChartDefault.title,
+        xAxisTitle: configChartDefault.xAxisTitle,
+        yAxisTitle: configChartDefault.yAxisTitle,
       } as ChartConfig<T>;
 
     case ChartType.TREEMAP:
@@ -127,7 +129,7 @@ export function createDefaultChartConfig<T extends ChartType>(
         animationEasing: configChartDefault.animationEasing,
         legendPosition: configChartDefault.legendPosition,
         showLabels: configChartDefault.showLabels,
-        title: 'New Chart',
+        title: configChartDefault.title,
       } as ChartConfig<T>;
 
     default:

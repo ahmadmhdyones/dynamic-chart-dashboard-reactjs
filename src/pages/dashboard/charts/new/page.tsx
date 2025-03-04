@@ -3,6 +3,8 @@ import { PageContainer } from '@toolpad/core/PageContainer';
 import Box from '@mui/material/Box';
 
 import { paths } from '@/helpers/map-routes';
+import { SITE } from '@/configs/site.config';
+import { shortenStr } from '@/helpers/string.utils';
 import MetaTags from '@/components/common/meta-tags';
 import SectionChartForm from '@/sections/chart-form';
 
@@ -18,7 +20,7 @@ function PageChartsNew() {
       ]}
       title=''
     >
-      <MetaTags title='Create New Chart | DCDR' />
+      <MetaTags title={`Create New Chart | ${shortenStr(SITE.name)}`} />
 
       <Box component='main' id={paths.dashboard.charts.new.id}>
         <SectionChartForm />

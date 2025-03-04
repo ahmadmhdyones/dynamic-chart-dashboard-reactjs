@@ -48,22 +48,7 @@ class ChartFactory {
           <XAxis dataKey='date' label={{ offset: -10, position: 'insideBottomRight', value: config.xAxisTitle }} />
           <YAxis label={{ angle: -90, position: 'insideLeft', value: config.yAxisTitle }} />
           {config.showTooltip !== false && <Tooltip />}
-          {config.showLegend !== false && (
-            <Legend
-              align={config.legendPosition === 'right' ? 'right' : config.legendPosition === 'left' ? 'left' : 'center'}
-              layout={config.legendPosition === 'left' || config.legendPosition === 'right' ? 'vertical' : 'horizontal'}
-              verticalAlign={
-                config.legendPosition === 'bottom' ? 'bottom' : config.legendPosition === 'top' ? 'top' : 'middle'
-              }
-              wrapperStyle={
-                config.legendPosition === 'left'
-                  ? { left: 0, paddingRight: 10 }
-                  : config.legendPosition === 'right'
-                    ? { paddingLeft: 10, right: 0 }
-                    : {}
-              }
-            />
-          )}
+          {config.showLegend !== false && this.getLegendComponent(config.legendPosition)}
           {chart.series.map(s => {
             const lineSeries = s as LineSeriesConfig;
             return (
@@ -105,22 +90,7 @@ class ChartFactory {
           <XAxis dataKey='date' label={{ offset: -10, position: 'insideBottomRight', value: config.xAxisTitle }} />
           <YAxis label={{ angle: -90, position: 'insideLeft', value: config.yAxisTitle }} />
           {config.showTooltip !== false && <Tooltip />}
-          {config.showLegend !== false && (
-            <Legend
-              align={config.legendPosition === 'right' ? 'right' : config.legendPosition === 'left' ? 'left' : 'center'}
-              layout={config.legendPosition === 'left' || config.legendPosition === 'right' ? 'vertical' : 'horizontal'}
-              verticalAlign={
-                config.legendPosition === 'bottom' ? 'bottom' : config.legendPosition === 'top' ? 'top' : 'middle'
-              }
-              wrapperStyle={
-                config.legendPosition === 'left'
-                  ? { left: 0, paddingRight: 10 }
-                  : config.legendPosition === 'right'
-                    ? { paddingLeft: 10, right: 0 }
-                    : {}
-              }
-            />
-          )}
+          {config.showLegend !== false && this.getLegendComponent(config.legendPosition)}
           {chart.series.map(s => {
             const barSeries = s as BarSeriesConfig;
             return (
@@ -141,6 +111,23 @@ class ChartFactory {
           })}
         </RechartsBarChart>
       </ResponsiveContainer>
+    );
+  }
+
+  private static getLegendComponent(position: AxisChartConfig['legendPosition']) {
+    return (
+      <Legend
+        align={position === 'right' ? 'right' : position === 'left' ? 'left' : 'center'}
+        layout={position === 'left' || position === 'right' ? 'vertical' : 'horizontal'}
+        verticalAlign={position === 'bottom' ? 'bottom' : position === 'top' ? 'top' : 'middle'}
+        wrapperStyle={
+          position === 'left'
+            ? { left: 0, paddingRight: 10 }
+            : position === 'right'
+              ? { paddingLeft: 10, right: 0 }
+              : {}
+        }
+      />
     );
   }
 }
