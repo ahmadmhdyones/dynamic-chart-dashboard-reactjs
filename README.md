@@ -80,6 +80,19 @@ The application follows a modern React architecture with:
 - Fullscreen mode for detailed chart analysis
 - Intuitive form controls for chart configuration
 
+### Data Layer
+
+- **Service Abstraction**: Implemented a storage service interface to abstract the API layer, allowing for:
+
+    - Seamless switching between real API calls and mock data
+    - Consistent error handling across different data sources
+    - Easier testing through dependency injection
+    - Future extensibility to support different data providers
+
+- **Singleton Pattern**: Used for service instances to ensure consistent state and reduce resource consumption
+
+This approach creates a clean separation between the data layer and UI components, making the codebase more maintainable and testable.
+
 ## Getting Started
 
 ### Prerequisites
