@@ -12,7 +12,12 @@ import SectionChartsList from '@/sections/charts-list';
 
 function PageCharts() {
   return (
-    <PageContainer>
+    <PageContainer
+      breadcrumbs={[
+        { path: paths.dashboard.root.to(), title: 'Dashboard' },
+        { path: paths.dashboard.charts.root.to(), title: 'Charts' },
+      ]}
+    >
       <MetaTags title={`Charts | ${shortenStr(SITE.name)}`} />
 
       <Box component='main' id={paths.dashboard.charts.root.id}>
