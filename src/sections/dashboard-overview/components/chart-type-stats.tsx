@@ -43,7 +43,7 @@ function ChartTypeStats({ bar: barCharts, isLoading, line: lineCharts, totalChar
           iconColor='success.main'
           isLoading={isLoading}
           title='Line Charts'
-          value={lineCharts}
+          value={lineCharts || 0}
         />
       </Grid>
 
@@ -57,7 +57,7 @@ function ChartTypeStats({ bar: barCharts, isLoading, line: lineCharts, totalChar
           iconColor='warning.main'
           isLoading={isLoading}
           title='Bar Charts'
-          value={barCharts}
+          value={barCharts || 0}
         />
       </Grid>
     </Grid>
