@@ -11,7 +11,7 @@ import { FredFrequencyShort } from '@/types/fred-freq.enum';
 // ----------------------------------------------------------------------
 
 export const CHARTS_MAX_DATA_SERIES = 2;
-export const CHARTS_MAX_RECENT_CHART_COUNT = 2;
+export const CHARTS_MAX_RECENT_CHART_COUNT = 3;
 
 export const configChartDefault = {
   animationDuration: 750,
