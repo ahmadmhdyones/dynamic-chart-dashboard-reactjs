@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import useChartActions from '@/hooks/use-chart-actions';
 import { useCharts } from '@/services/api/hooks/use-charts';
 import { ChartsGrid } from '@/components/charts/chart-grid';
+import { CHARTS_MAX_RECENT_CHART_COUNT } from '@/configs/charts.config';
 import CreateChartButton from '@/components/charts/create-chart-button';
 
 // ----------------------------------------------------------------------
@@ -23,7 +24,12 @@ export default function SectionRecentCharts() {
         </Stack>
       </Box>
 
-      <ChartsGrid charts={charts} error={error} isLoading={isLoading} {...chartActions} />
+      <ChartsGrid
+        charts={charts.slice(0, CHARTS_MAX_RECENT_CHART_COUNT)}
+        error={error}
+        isLoading={isLoading}
+        {...chartActions}
+      />
     </Box>
   );
 }

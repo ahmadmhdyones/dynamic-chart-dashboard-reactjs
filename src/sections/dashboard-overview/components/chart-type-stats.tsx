@@ -11,12 +11,12 @@ import StatsCard from './stats-card';
 
 interface ChartTypeStatsProps {
   totalCharts: number;
-  lineCharts: number;
-  barCharts: number;
+  line: number;
+  bar: number;
   isLoading: boolean;
 }
 
-function ChartTypeStats({ barCharts, isLoading, lineCharts, totalCharts }: ChartTypeStatsProps) {
+function ChartTypeStats({ bar: barCharts, isLoading, line: lineCharts, totalCharts }: ChartTypeStatsProps) {
   return (
     <Grid container spacing={3}>
       <Grid item md={4} xs={12}>

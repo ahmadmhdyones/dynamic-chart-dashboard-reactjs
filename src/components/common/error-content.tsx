@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { toast } from 'react-hot-toast';
+
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
 import Typography from '@mui/material/Typography';
@@ -22,6 +25,11 @@ export default function ErrorContent({
   title = 'Error',
 }: ErrorContentProps) {
   const errorMessage = error instanceof Error ? error.message : message;
+
+  useEffect(() => {
+    console.error(error);
+    toast.error(errorMessage);
+  }, [error, errorMessage]);
 
   return (
     <Box sx={{ p: 3, textAlign: 'center', ...sx }}>

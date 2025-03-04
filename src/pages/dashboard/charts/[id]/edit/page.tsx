@@ -30,7 +30,7 @@ function PageChartsEdit() {
     }
 
     if (error || !chart) {
-      return <ErrorContent message={error?.message || 'Chart not found'} title='Chart not found' />;
+      return <ErrorContent error={error} message={error?.message || 'Chart not found'} title='Chart not found' />;
     }
 
     return <SectionChartForm initialChartData={chart} mode='edit' />;
